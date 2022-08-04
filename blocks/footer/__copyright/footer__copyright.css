@@ -10,9 +10,20 @@
   
 }
 
-@media screen and (max-width: 435) {
+@media screen and (max-width: 880px) {
+  .footer__copyright {
+  margin: 0 0 0 10%;
+}
+
+}
+
+
+
+
+@media screen and (max-width: 435px) {
   .footer__copyright {
     font-size: 14px;
 
   }
 }
+

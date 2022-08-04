@@ -20,3 +20,11 @@
     grid-column: 1;
   }
 }
+
+@media screen and (max-width: 435px) {
+  .profile__button {
+    width: 288px;
+    grid-row: 4;
+    grid-column: 1;
+  }
+}

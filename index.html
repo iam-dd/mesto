@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Жав-Ив Кусто - исследователь океана</title>
   <link rel="stylesheet" href="./pages/index.css">
+
 </head>
 
 <body class="page page_content">
@@ -72,15 +73,16 @@
   </footer>
   <div class="popup popup_opened">
     <div class="popup__container">
-       <form class="popup__form" action="" method="get">
-         <p class="popup__title">Редактировать профиль</p>
+      <form class="popup__form" action="url" method="get">
+        <p class="popup__title">Редактировать профиль</p>
         <input class="popup__input" type="text" name="name" id="name" required>
         <input class="popup__input" type="text" name="aboutme" id="aboutme" required>
         <button class="popup__button-submit" type="submit">Сохранить</button>
-    </form>
-    <button class="popup__button-closed">закрыть</button>
+      </form>
+      <button class="popup__button-close">закрыть</button>
+    </div>
   </div>
-  </div>
+  <script src="./blocks/popup/popup.js"></script>
 </body>
 
 </html>
