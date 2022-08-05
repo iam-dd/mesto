@@ -14,10 +14,10 @@
 @media screen and (max-width: 435px) {
   .popup__container {
     top: 0;
-    bottom: 38%;
-    left: 12%;
+    bottom: 44%;
+    left: 6%;
     width: 280px;
-    height: 320px;
+    height: 345px;
     flex-direction: column-reverse;
     margin: auto;
   }

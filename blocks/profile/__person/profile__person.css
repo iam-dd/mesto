@@ -1,21 +1,18 @@
 .profile__person {
-  display: grid;
-  grid: repeat(2, min-content) / repeat(3, auto);
+  display: flex;
+  
 }
 
-
-@media screen and (max-width: 600px) {
-  .profile__person {
-    grid: min-content / auto;
-    grid-auto-flow: row;
-  }
-
+@media screen and (max-width: 712px) {
+.profile__person {
+  display: flex;
+  justify-content: space-between;
+  
+}
 }
 
-@media screen and (max-width: 435px) {
+@media screen and (max-width: 485px) {
   .profile__person {
-    grid: min-content / auto;
-    grid-auto-flow: row;
+    flex-direction: column;
   }
-
 }

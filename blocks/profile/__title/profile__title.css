@@ -1,24 +1,21 @@
 .profile__title {
   display: block;
-  margin: 0 0 16px 0;
-  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  margin: 0;
+  font-family: 'Inter', sans-serif;
   font-size: 42px;
   line-height: 48px;
   font-weight: 500;
   text-transform: capitalize;
   color: #fff;
   grid-row: 1;
-  grid-column: 2;
-  place-self: end;
+  grid-column: 1;
+  place-self: center;
 }
+
 
 @media screen and (max-width: 435px) {
   .profile__title {
-    grid-row: 2;
-    grid-column: 1;
     font-size: 27px;
-    place-self: start center;
-    margin: 26px 30px 14px 0;
-
+    align-items: end;
   }
 }

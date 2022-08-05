@@ -2,6 +2,7 @@
   width: 150px;
   height: 50px;
   border: 2px solid #fff;
+  border-radius: 2px;
   background-color: #000;
   color: #fff;
   font-size: 22px;
@@ -13,18 +14,16 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 435px) {
+@media screen and (max-width: 712px) {
   .profile__button {
-    width: 288px;
-    grid-row: 4;
-    grid-column: 1;
+    width: 284px;
+    margin: 20px auto;
   }
 }
 
 @media screen and (max-width: 435px) {
   .profile__button {
-    width: 288px;
-    grid-row: 4;
-    grid-column: 1;
+    width: 284px;
+    margin: 36px auto 0;
   }
 }
