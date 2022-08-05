@@ -1,17 +1,16 @@
 .profile__person {
   display: flex;
-  
+
 }
 
 @media screen and (max-width: 712px) {
-.profile__person {
-  display: flex;
-  justify-content: space-between;
-  
-}
+  .profile__person {
+    justify-content: space-between;
+
+  }
 }
 
-@media screen and (max-width: 485px) {
+@media screen and (max-width: 435px) {
   .profile__person {
     flex-direction: column;
   }

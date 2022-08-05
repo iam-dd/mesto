@@ -2,14 +2,14 @@
   max-width: 120px;
   max-height: 120px;
   margin: 0;
-  
+
 }
 
-@media screen and (max-width: 630px) {
-.profile__avatar {
-  margin: 0 auto 20px;
-  grid-row: 1;
-  place-self: center;
- 
-}
+@media screen and (max-width: 712px) {
+  .profile__avatar {
+    margin: 0 auto 20px;
+    grid-row: 1;
+    place-self: center;
+
+  }
 }

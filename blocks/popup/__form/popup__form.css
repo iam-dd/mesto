@@ -16,11 +16,3 @@
   place-self: end;
 
 }
-
-@media screen and (max-width: 435px) {
-  .popup__form {
-    width: 280px;
-    height: 320px;
-
-  }
-}

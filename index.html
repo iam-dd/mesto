@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Жав-Ив Кусто - исследователь океана</title>
+  <title>Место</title>
   <link rel="stylesheet" href="./pages/index.css">
 
 </head>
@@ -15,14 +15,14 @@
   </header>
   <main>
     <section class="profile page__profile">
-<div class="profile__person">
-      <img class="profile__avatar" src="./images/Avatar.png" alt="аватар">
-      <div class="profile__block-name">
-        <h1 class="profile__title">жак-ив кусто</h1>
-        <button class="profile__edit-button"></button>>
-        <p class="profile__subtitle">Исследователь океана</p>
+      <div class="profile__person">
+        <img class="profile__avatar" src="./images/Avatar.png" alt="аватар">
+        <div class="profile__block-name">
+          <h1 class="profile__title">жак-ив кусто</h1>
+          <button class="profile__edit-button"></button>>
+          <p class="profile__subtitle">Исследователь океана</p>
+        </div>
       </div>
-    </div>
       <button class="profile__button">+</button>
 
     </section>
@@ -74,12 +74,12 @@
   <footer class="footer page__footer">
     <span class="footer__copyright">© 2020 Mesto Russia</span>
   </footer>
-  <div class="popup">
+  <div class="popup popup_opened">
     <div class="popup__container">
       <form class="popup__form" action="url" method="get">
         <p class="popup__title">Редактировать профиль</p>
-        <input class="popup__input" type="text" name="name" id="name" required>
-        <input class="popup__input" type="text" name="aboutme" id="aboutme" required>
+        <input class="popup__input"  maxlength="40" type="text" name="name" id="name" required>
+        <input class="popup__input"  maxlength="40" type="text" name="aboutme" id="aboutme" required>
         <button class="popup__button-submit" type="submit">Сохранить</button>
       </form>
       <button class="popup__button-close"></button>

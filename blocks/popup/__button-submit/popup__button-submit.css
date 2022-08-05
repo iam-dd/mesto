@@ -6,7 +6,7 @@
   font-family: 'Inter', sans-serif;
   font-size: 18px;
   font-weight: 400;
-   
+
 }
 
 .popup__button-submit:hover {
@@ -14,6 +14,7 @@
   cursor: pointer;
 
 }
+
 @media screen and (max-width: 435px) {
   .popup__button-submit {
     width: 238px;
