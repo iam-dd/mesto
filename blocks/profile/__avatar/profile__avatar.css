@@ -7,9 +7,10 @@
 
 @media screen and (max-width: 712px) {
   .profile__avatar {
-    margin: 0 auto 20px;
+    margin: 0 auto 10px;
     grid-row: 1;
     place-self: center;
 
   }
 }
+

@@ -1,11 +1,14 @@
 .popup__input {
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
   padding: 0;
   width: 358px;
   height: 27px;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, .2);
-  font-family: inherit;
-  font-size: 14px;
+  margin: 0;
+
 }
 
 @media screen and (max-width: 435px) {

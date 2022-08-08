@@ -3,12 +3,15 @@
   grid: min-content / auto auto;
   row-gap: 16px;
   column-gap: 18px;
-  margin: 0 0 0 30px;
+  margin: 0 0 17px 32px;
 }
 
 
 @media screen and (max-width: 435px) {
   .profile__block-name {
     row-gap: 0;
+    column-gap: 10px;
+    margin: 0 auto;
+    align-items: start;
   }
 }

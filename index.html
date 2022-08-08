@@ -19,11 +19,11 @@
         <img class="profile__avatar" src="./images/Avatar.png" alt="аватар">
         <div class="profile__block-name">
           <h1 class="profile__title">жак-ив кусто</h1>
-          <button class="profile__edit-button"></button>>
+          <button type="button" class="profile__edit-button"></button>>
           <p class="profile__subtitle">Исследователь океана</p>
         </div>
       </div>
-      <button class="profile__button">+</button>
+      <button type="button" class="profile__button"></button>
 
     </section>
     <section class="elements page__elements">
@@ -31,61 +31,65 @@
         <img class="card__image" src="./images/karachaevsk.jpg" alt="Карачаевск">
         <div class="card__sign">
           <h2 class="card__location">карачаевск</h2>
-          <button class="card__like"></button>
+          <button type="button" class="card__like"></button>
         </div>
       </div>
       <div class="card">
         <img class="card__image" src="./images/elbrus.png" alt="гора Эльбрус">
         <div class="card__sign">
           <h2 class="card__location">гора эльбрус</h2>
-          <button class="card__like"></button>
+          <button type="button" class="card__like"></button>
         </div>
       </div>
       <div class="card">
         <img class="card__image" src="./images/dombay.png" alt="Домбай">
         <div class="card__sign">
           <h2 class="card__location">домбай</h2>
-          <button class="card__like"></button>
+          <button type="button" class="card__like"></button>
         </div>
       </div>
       <div class="card">
         <img class="card__image" src="./images/elbrus.png" alt="гора Эльбрус">
         <div class="card__sign">
           <h2 class="card__location">гора эльбрус</h2>
-          <button class="card__like"></button>
+          <button type="button" class="card__like"></button>
         </div>
       </div>
       <div class="card">
         <img class="card__image" src="./images/dombay.png" alt="Домбай">
         <div class="card__sign">
           <h2 class="card__location">домбай</h2>
-          <button class="card__like"></button>
+          <button type="button" class="card__like"></button>
         </div>
       </div>
       <div class="card">
         <img class="card__image" src="./images/karachaevsk.jpg" alt="Карачаевск">
         <div class="card__sign">
           <h2 class="card__location">карачаевo-черкессия</h2>
-          <button class="card__like"></button>
+          <button type="button" class="card__like"></button>
         </div>
       </div>
     </section>
   </main>
   <footer class="footer page__footer">
-    <span class="footer__copyright">© 2020 Mesto Russia</span>
+    <p class="footer__copyright">© 2020 Mesto Russia</p>
   </footer>
-  <div class="popup popup_opened">
+  <section class="popup">
     <div class="popup__container">
+      <button class="popup__button-close" type="button"></button>
+      <div class="popup__content">
+            <h2 class="popup__title">Редактировать профиль</h2>
       <form class="popup__form" action="url" method="get">
-        <p class="popup__title">Редактировать профиль</p>
-        <input class="popup__input"  maxlength="40" type="text" name="name" id="name" required>
-        <input class="popup__input"  maxlength="40" type="text" name="aboutme" id="aboutme" required>
+        <input class="popup__input popup__input_name" type="text" name="name" required>
+        <input class="popup__input popup__input_aboutme" type="text" name="aboutme" required>
         <button class="popup__button-submit" type="submit">Сохранить</button>
       </form>
-      <button class="popup__button-close"></button>
+      
     </div>
-  </div>
-  <script src="./blocks/popup/popup.js"></script>
+    </div>
+  </section>
+
+  <script src="./scripts/index.js"></script>
 </body>
 
 </html>

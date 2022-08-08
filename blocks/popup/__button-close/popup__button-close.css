@@ -3,12 +3,11 @@
   width: 32px;
   height: 32px;
   padding: 0;
-  background-color: transparent;
+  background: none;
   background-image: url('../../../images/button_close.svg');
   background-repeat: no-repeat;
   background-size: contain;
-  background-position: center center;
-  place-self: start;
+  place-self: end;
   flex-shrink: 0;
 }
 
