@@ -11,8 +11,8 @@ let titleText = document.querySelector('.profile__title');
 let subtitleText = document.querySelector('.profile__subtitle');
 
 //Input
-let inputName = document.querySelector('.popup__input_name');
-let inputAboutme = document.querySelector('.popup__input_aboutme');
+let inputName = document.querySelector('.popup__input_field_name');
+let inputAboutme = document.querySelector('.popup__input_field_aboutme');
 
 //Form
 let formElement = document.querySelector('.popup__form');

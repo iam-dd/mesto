@@ -7,9 +7,10 @@
   font-size: 18px;
   font-weight: 400;
   border: 0;
+  border-radius: 2px;
   flex-shrink: 0;
   padding: 0;
-  margin: 27px auto 0;
+  margin: 0 auto;
 
 }
 
@@ -19,12 +20,12 @@
 
 }
 
-@media screen and (max-width: 435px) {
+@media screen and (max-width: 510px) {
   .popup__button-submit {
     width: 238px;
     height: 46px;
     font-size: 14px;
-    margin: 27px auto 0;
+    margin: 0 auto 0;
 
   }
 }

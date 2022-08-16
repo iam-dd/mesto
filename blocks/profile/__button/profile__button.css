@@ -4,10 +4,11 @@
   border-radius: 2px;
   background-color: transparent;
   background-image: url(../../../images/button_add.svg);
-  background-size: 16px;
+  background-size: 22px;
   background-repeat: no-repeat;
   background-position: center;
   border: 1px solid #fff;
+  margin: 0 0 8px 0;
   }
 
 .profile__button:hover {
@@ -25,5 +26,6 @@
 @media screen and (max-width: 435px) {
   .profile__button {
      margin: 36px auto 0;
+     background-size: 16px;
   }
 }

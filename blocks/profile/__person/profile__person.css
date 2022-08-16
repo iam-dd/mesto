@@ -12,9 +12,9 @@
   }
 }
 
-@media screen and (max-width: 435px) {
+@media screen and (max-width: 510px) {
   .profile__person {
     flex-direction: column;
-        
+            
   }
 }
