@@ -7,8 +7,9 @@
   background-image: url('../../../images/button_close.svg');
   background-repeat: no-repeat;
   background-size: contain;
-  place-self: end;
-  flex-shrink: 0;
+  position: absolute;
+  top: -12%;
+  right: -9%;
 }
 
 .popup__button-close:hover {
@@ -20,7 +21,8 @@
   .popup__button-close {
     width: 20px;
     height: 20px;
-    place-self: end;
     background-size: cover;
+    top: -11%;
+    right: -1%;
   }
 }
