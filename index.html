@@ -27,56 +27,14 @@
 
     </section>
     <section class="elements page__elements">
-      <div class="card">
-        <img class="card__image" src="./images/karachaevsk.jpg" alt="Карачаевск">
-        <div class="card__sign">
-          <h2 class="card__location">карачаевск</h2>
-          <button type="button" class="card__like"></button>
-        </div>
-      </div>
-      <div class="card">
-        <img class="card__image" src="./images/elbrus.png" alt="гора Эльбрус">
-        <div class="card__sign">
-          <h2 class="card__location">гора эльбрус</h2>
-          <button type="button" class="card__like"></button>
-        </div>
-      </div>
-      <div class="card">
-        <img class="card__image" src="./images/dombay.png" alt="Домбай">
-        <div class="card__sign">
-          <h2 class="card__location">домбай</h2>
-          <button type="button" class="card__like"></button>
-        </div>
-      </div>
-      <div class="card">
-        <img class="card__image" src="./images/elbrus.png" alt="гора Эльбрус">
-        <div class="card__sign">
-          <h2 class="card__location">гора эльбрус</h2>
-          <button type="button" class="card__like"></button>
-        </div>
-      </div>
-      <div class="card">
-        <img class="card__image" src="./images/dombay.png" alt="Домбай">
-        <div class="card__sign">
-          <h2 class="card__location">домбай</h2>
-          <button type="button" class="card__like"></button>
-        </div>
-      </div>
-      <div class="card">
-        <img class="card__image" src="./images/karachaevsk.jpg" alt="Карачаевск">
-        <div class="card__sign">
-          <h2 class="card__location">карачаевo-черкессия</h2>
-          <button type="button" class="card__like"></button>
-        </div>
-      </div>
     </section>
   </main>
   <footer class="footer page__footer">
     <p class="footer__copyright">© 2020 Mesto Russia</p>
   </footer>
-  <section class="popup">
+  <section class="popup popup_section_profile">
     <div class="popup__container">
-      <button class="popup__button-close" type="button"></button>
+      <button class="popup__button-close popup__button-close_section_profile" type="button"></button>
       <h2 class="popup__title">Редактировать профиль</h2>
       <form class="popup__form" action="url" method="get" name="popup __submit-form">
         <input class="popup__input popup__input_field_name" type="text" name="name" required>
@@ -85,7 +43,26 @@
       </form>
     </div>
    </section>
-
+   <section class="popup popup_section_elements">
+    <div class="popup__container">
+      <button class="popup__button-close popup__button-close_section_elements" type="button"></button>
+      <h2 class="popup__title">Новое место</h2>
+      <form class="popup__form" action="url" method="get" name="popup __submit-form">
+        <input class="popup__input popup__input_field_name" type="text" name="name" required>
+        <input class="popup__input popup__input_field_aboutme" type="text" name="aboutme" required>
+        <button class="popup__button-submit" type="submit">Создать</button>
+      </form>
+    </div>
+   </section>
+<template class="template">
+  <div class="card">
+    <img class="card__image" src="./images/karachaevsk.jpg" alt="Карачаевск">
+    <div class="card__sign">
+      <h2 class="card__location">карачаевo-черкессия</h2>
+      <button type="button" class="card__like"></button>
+    </div>
+  </div> 
+</template>
   <script src="./scripts/index.js"></script>
 </body>
 
