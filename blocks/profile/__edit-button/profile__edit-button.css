@@ -12,12 +12,12 @@
   place-self: center;
   padding: 0;
   border: 0;
-
+  cursor: pointer;
 }
 
 .profile__edit-button:hover {
   opacity: .6;
-  cursor: pointer;
+  
 }
 
 @media screen and (max-width: 435px) {
