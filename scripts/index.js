@@ -3,7 +3,7 @@
 const editButton = document.querySelector('.profile__edit-button');
 const closeButtonProfile = document.querySelector('.popup__button-close_section_profile');
 const closeButtonElements = document.querySelector('.popup__button-close_section_elements');
-const closeButtonImage = document.querySelector('.popup__button-closeimage');
+const closeButtonImage = document.querySelector('.popup__button-close_section_image');
 const addButton = document.querySelector('.profile__button');
 
 //Popup

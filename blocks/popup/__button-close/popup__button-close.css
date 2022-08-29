@@ -1,4 +1,4 @@
-.popup__button-close {
+/* .popup__button-close {
   border: none;
   width: 32px;
   height: 32px;
@@ -24,5 +24,33 @@
     background-size: cover;
     top: -11%;
     right: -1%;
+  }
+} */
+
+.popup__button-close {
+  border: none;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background: none;
+  background-image: url('../../../images/button_close.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  place-self: end;
+  margin-right: -35px;
+ 
+}
+
+.popup__button-close:hover {
+  opacity: .6;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 510px) {
+  .popup__button-close {
+    width: 20px;
+    height: 20px;
+    background-size: cover;
+    margin-right: -20px;
   }
 }
