@@ -3,13 +3,16 @@
   font-family: 'Inter', Arial, sans-serif;
   font-size: 24px;
   font-weight: 900;
-  margin: 0 0 43px 36px;
+  box-sizing: border-box;
+  padding: 0 0 54px;
+  margin: 0;
+  
 }
 
 
 @media screen and (max-width: 510px) {
   .popup__title {
     font-size: 18px;
-    margin: 0 0 70px 0;
+    padding: 0 0 70px 0;
   }
 }

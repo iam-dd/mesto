@@ -25,47 +25,39 @@
       </div>
       <button type="button" class="profile__button"></button>
     </section>
-    
     <section class="elements page__elements" aria-label="Карточки с фотографиями">
     </section>
   </main>
-
   <footer class="footer page__footer">
     <p class="footer__copyright">© 2020 Mesto Russia</p>
   </footer>
-
-  
   <section class="popup popup_section_profile">
     <div class="popup__container">
       <button class="popup__button-close popup__button-close_section_profile" type="button"></button>
-      <h2 class="popup__title">Редактировать профиль</h2>
-      <form class="popup__form popup__form_section_profile" action="url" method="get" name="popup __submit-form">
+        <form class="popup__form popup__form_section_profile" action="url" method="get" name="popup __submit-form">
+          <h2 class="popup__title">Редактировать профиль</h2>
         <input class="popup__input popup__input_field_name" type="text" name="name" required>
         <input class="popup__input popup__input_field_aboutme" type="text" name="aboutme" required>
         <button class="popup__button-submit" type="submit">Сохранить</button>
       </form>
     </div>
    </section>
-
-
    <section class="popup popup_section_elements">
     <div class="popup__container">
       <button class="popup__button-close popup__button-close_section_elements" type="button"></button>
-      <h2 class="popup__title">Новое место</h2>
-      <form class="popup__form popup__form_section_elements" action="url" method="get" name="popup __submit-form">
+        <form class="popup__form popup__form_section_elements" action="url" method="get" name="popup __submit-form">
+        <h2 class="popup__title">Новое место</h2>
         <input class="popup__input popup__input_field_title" type="text" name="name" placeholder="Название" required>
         <input class="popup__input popup__input_field_link" type="text" name="aboutme" placeholder="Ссылка на картинку" required>
         <button class="popup__button-submit" type="submit">Создать</button>
       </form>
     </div>
    </section>
-
-
    <section class="popup popup_section_image">
-    <div class="popup__container-image">
+    <div class="popup__container">
       <button class="popup__button-close popup__button-close_section_image" type="button"></button>
       <img src="#" class="popup__image" alt="#">
-      <h2 class="popup__title-image">title image</h2>
+      <h2 class="popup__title-image">image title</h2>
     </div>
    </section>
 
@@ -82,5 +74,4 @@
 </template>
   <script src="./scripts/index.js"></script>
 </body>
-
 </html>

@@ -120,8 +120,8 @@ function addCard(itemTitle, itemLink) {
   cardImage.addEventListener('click', () => {
       openPopup(popup_image);
       popup_image.querySelector('.popup__image').setAttribute('src', itemLink);
-      const elementTitle = elementPopupImage.querySelector('.popup__title-image');
-      elementTitle.textContent = itemTitle;
+      popup_image.querySelector('.popup__title-image').textContent = itemTitle;
+      
       });
 
   listElement.prepend(card);
