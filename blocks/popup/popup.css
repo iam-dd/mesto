@@ -8,7 +8,13 @@
   right: 0;
   bottom: 0;
   left: 0;
-  display: none;
+  display: flex;
   justify-content: center;
   align-items: start;
+  animation-name: popup__animation 1s linear;
+  animation-play-state: paused;
+
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
 }
