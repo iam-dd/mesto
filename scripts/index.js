@@ -25,10 +25,6 @@ const inputAboutme = formProfileAdd.querySelector('.popup__input_field_aboutme')
 const inputTitle = formElementsAdd.querySelector('.popup__input_field_title');
 const inputLink = formElementsAdd.querySelector('.popup__input_field_link');
 
-//Template, card, elements
-const template = document.querySelector('.template');
-const cardTemplate = template.content.cloneNode(true);
-const cardImage = cardTemplate.querySelector('.card__image');
 const listElement = document.querySelector('.elements');
 
 
@@ -100,6 +96,9 @@ addButton.addEventListener('click', () => {
 //Function Add cards
 
 function addCard(itemTitle, itemLink) {
+  const template = document.querySelector('.template');
+  const cardTemplate = template.content.cloneNode(true);
+  const cardImage = cardTemplate.querySelector('.card__image');
   cardImage.setAttribute('src', itemLink);
   cardImage.setAttribute('alt', itemTitle);
   cardTemplate.querySelector('.card__location').textContent = itemTitle;
@@ -125,8 +124,9 @@ function addCard(itemTitle, itemLink) {
 
 //Add cards from array
 
-initialCards.forEach((element) => {
-  addCard(element.name, element.link);
+initialCards.forEach(function(element) {
+addCard(element.name, element.link);
+
 });
 
 
