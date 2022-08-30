@@ -1,9 +1,6 @@
 
 //Button
 const editButton = document.querySelector('.profile__edit-button');
-const closeButtonProfile = document.querySelector('.popup__button-close_section_profile');
-const closeButtonElements = document.querySelector('.popup__button-close_section_elements');
-const closeButtonImage = document.querySelector('.popup__button-close_section_image');
 const addButton = document.querySelector('.profile__button');
 
 //Popup
@@ -66,26 +63,18 @@ function openPopup(section) {
   section.classList.add('popup_opened');
 };
 
+//Close  buttons
+const closeButtons = document.querySelectorAll('.popup__button-close');
+closeButtons.forEach((button) => {
+   const popup = button.closest('.popup');
+   button.addEventListener('click', () => hidePopup(popup));
+});
+
 //Edit button
 editButton.addEventListener('click', () => {
   openPopup(popupProfile);
   inputName.value = titleText.textContent;
   inputAboutme.value = subtitleText.textContent;
-});
-
-//Close button section profile
-closeButtonProfile.addEventListener('click', () => {
-  hidePopup(popupProfile);
-});
-
-//Close button section elements
-closeButtonElements.addEventListener('click', () => {
-  hidePopup(popupElements);
-});
-
-//Close button section image
-closeButtonImage.addEventListener('click', () => {
-  hidePopup(popupImage);
 });
 
 //Add button
@@ -108,15 +97,18 @@ function addCard(itemTitle, itemLink) {
   });
 
   cardTemplate.querySelector('.card__like').addEventListener('click', (evt) => {
-    const cardToLike = evt.target.closest('.card__like');
-    cardToLike.classList.toggle('card__like_state_active');
-    cardToLike.classList.toggle('card__like_state_hover');
+    const likeButton = evt.target
+    likeButton.classList.toggle('card__like_state_active');
+    likeButton.classList.toggle('card__like_state_hover');
   });
 
   cardImage.addEventListener('click', () => {
     openPopup(popupImage);
-    popupImage.querySelector('.popup__image').setAttribute('src', itemLink);
+    const imageInPopup = popupImage.querySelector('.popup__image');
+    imageInPopup.setAttribute('src', itemLink);
+    imageInPopup.setAttribute('alt', itemTitle);
     popupImage.querySelector('.popup__title-image').textContent = itemTitle;
+    
   });
 
   listElement.prepend(cardTemplate);
