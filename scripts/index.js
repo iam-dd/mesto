@@ -7,6 +7,8 @@ const addButton = document.querySelector('.profile__button');
 const popupProfile = document.querySelector('.popup_section_profile');
 const popupElements = document.querySelector('.popup_section_elements');
 const popupImage = document.querySelector('.popup_section_image');
+const imageInPopup = popupImage.querySelector('.popup__image');
+const titlePopupImage = popupImage.querySelector('.popup__title-image')
 
 //Title
 const titleText = document.querySelector('.profile__title');
@@ -87,7 +89,7 @@ addButton.addEventListener('click', () => {
 //Function Add cards
 
 function addCard(itemTitle, itemLink) {
-  card = createCard(itemTitle, itemLink)
+  const card = createCard(itemTitle, itemLink)
   listElement.prepend(card);
 };
 
@@ -103,10 +105,9 @@ function createCard(itemTitle, itemLink) {
   });
   cardImage.addEventListener('click', () => {
     openPopup(popupImage);
-    const imageInPopup = popupImage.querySelector('.popup__image');
     imageInPopup.setAttribute('src', itemLink);
     imageInPopup.setAttribute('alt', itemTitle);
-    popupImage.querySelector('.popup__title-image').textContent = itemTitle;
+    titlePopupImage.textContent = itemTitle;
   });
   newCard.querySelector('.card__like').addEventListener('click', (evt) => {
     const likeButton = evt.target
