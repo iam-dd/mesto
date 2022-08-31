@@ -26,6 +26,7 @@ const listElement = document.querySelector('.elements');
 const template = document.querySelector('.template');
 
 
+
 //Cards Array
 const initialCards = [
   {
@@ -67,8 +68,8 @@ function openPopup(section) {
 //Close  buttons
 const closeButtons = document.querySelectorAll('.popup__button-close');
 closeButtons.forEach((button) => {
-   const popup = button.closest('.popup');
-   button.addEventListener('click', () => hidePopup(popup));
+  const popup = button.closest('.popup');
+  button.addEventListener('click', () => hidePopup(popup));
 });
 
 //Edit button
@@ -86,8 +87,8 @@ addButton.addEventListener('click', () => {
 //Function Add cards
 
 function addCard(itemTitle, itemLink) {
-     card = createCard(itemTitle, itemLink)
-     listElement.prepend(card);
+  card = createCard(itemTitle, itemLink)
+  listElement.prepend(card);
 };
 
 function createCard(itemTitle, itemLink) {
@@ -107,30 +108,31 @@ function createCard(itemTitle, itemLink) {
     imageInPopup.setAttribute('alt', itemTitle);
     popupImage.querySelector('.popup__title-image').textContent = itemTitle;
   });
-    newCard.querySelector('.card__like').addEventListener('click', (evt) => {
+  newCard.querySelector('.card__like').addEventListener('click', (evt) => {
     const likeButton = evt.target
     likeButton.classList.toggle('card__like_state_active');
     likeButton.classList.toggle('card__like_state_hover');
   });
 
-  return(newCard);
- };
+  return (newCard);
+};
 
 
 
 //Form add new card(element)
 
-formElementsAdd.addEventListener('submit', (ev) => {
-  ev.preventDefault();
+formElementsAdd.addEventListener('submit', (evt) => {
+  evt.preventDefault();
   const itemTitle = inputTitle.value;
   const itemLink = inputLink.value;
   addCard(itemTitle, itemLink);
   hidePopup(popupElements);
+  evt.target.reset();
 });
 
 //Form add New Profile
-formProfileAdd.addEventListener('submit', (ev) => {
-  ev.preventDefault();
+formProfileAdd.addEventListener('submit', (evt) => {
+  evt.preventDefault();
   titleText.textContent = inputName.value;
   subtitleText.textContent = inputAboutme.value;
   hidePopup(popupProfile);
