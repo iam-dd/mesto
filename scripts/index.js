@@ -9,6 +9,7 @@ const popupElements = document.querySelector('.popup_section_elements');
 const popupImage = document.querySelector('.popup_section_image');
 const imageInPopup = popupImage.querySelector('.popup__image');
 const titlePopupImage = popupImage.querySelector('.popup__title-image')
+const popup = Array.from(document.querySelectorAll('.popup'));
 
 //Title
 const titleText = document.querySelector('.profile__title');
@@ -62,16 +63,23 @@ function hidePopup(section) {
   section.classList.remove('popup_opened');
 };
 
+
+
 //Popup open
 function openPopup(section) {
   section.classList.add('popup_opened');
+  setEscKey(section);
+
 };
 
 //Close  buttons
 const closeButtons = document.querySelectorAll('.popup__button-close');
 closeButtons.forEach((button) => {
   const popup = button.closest('.popup');
-  button.addEventListener('click', () => hidePopup(popup));
+  button.addEventListener('click', () => {
+    hidePopup(popup);
+
+  });
 });
 
 //Edit button
@@ -118,8 +126,6 @@ function createCard(itemTitle, itemLink) {
   return (newCard);
 };
 
-
-
 //Form add new card(element)
 
 formElementsAdd.addEventListener('submit', (evt) => {
@@ -142,3 +148,22 @@ formProfileAdd.addEventListener('submit', (evt) => {
 initialCards.forEach((element) => {
   addCard(element.name, element.link);
 });
+
+//Popup close overlay
+popup.forEach((element) => {
+  element.addEventListener('click', (evt) => {
+    const popupOverlay = evt.target;
+    hidePopup(popupOverlay);
+    
+  });
+});
+
+
+//Esc
+function setEscKey(section) {
+  document.addEventListener('keydown', (evt) => {
+    if (evt.key === 'Escape') {
+      hidePopup(section);
+    }
+  });
+};

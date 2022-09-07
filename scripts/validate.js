@@ -34,7 +34,7 @@ const setEventListeners = (formElement) => {
     inputElement.addEventListener('input', () => {
       isValid(formElement, inputElement);
       toggleButtonState(inputList, buttonElement);
-
+    
     });
   });
 };
