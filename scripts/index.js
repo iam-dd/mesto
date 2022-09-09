@@ -9,7 +9,7 @@ const popupElements = document.querySelector('.popup_section_elements');
 const popupImage = document.querySelector('.popup_section_image');
 const imageInPopup = popupImage.querySelector('.popup__image');
 const titlePopupImage = popupImage.querySelector('.popup__title-image')
-const popup = Array.from(document.querySelectorAll('.popup'));
+const popups = Array.from(document.querySelectorAll('.popup'));
 
 //Title
 const titleText = document.querySelector('.profile__title');
@@ -58,9 +58,20 @@ const initialCards = [
   }
 ];
 
+
+//Esc
+function closeByEscape(evt) {
+  if (evt.key === 'Escape') {
+    const popupOpened = document.querySelector('.popup_opened');
+    hidePopup(popupOpened);
+  };
+};
+
+
 //Popup hide
 function hidePopup(section) {
   section.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closeByEscape);
 };
 
 
@@ -68,9 +79,12 @@ function hidePopup(section) {
 //Popup open
 function openPopup(section) {
   section.classList.add('popup_opened');
-  setEscKey(section);
-
+  document.addEventListener('keydown', closeByEscape);
+  const inputs = Array.from(section.querySelectorAll('.popup__input'));
+  const button = section.querySelector('.popup__button-submit');
+  toggleButtonState(inputs, button);
 };
+
 
 //Close  buttons
 const closeButtons = document.querySelectorAll('.popup__button-close');
@@ -132,9 +146,11 @@ formElementsAdd.addEventListener('submit', (evt) => {
   evt.preventDefault();
   const itemTitle = inputTitle.value;
   const itemLink = inputLink.value;
+  const button = formElementsAdd.querySelector('.popup__button-submit')
   addCard(itemTitle, itemLink);
   hidePopup(popupElements);
   evt.target.reset();
+
 });
 
 //Form add New Profile
@@ -150,20 +166,13 @@ initialCards.forEach((element) => {
 });
 
 //Popup close overlay
-popup.forEach((element) => {
+popups.forEach((element) => {
   element.addEventListener('mousedown', (evt) => {
     const popupOverlay = evt.target;
     hidePopup(popupOverlay);
-    
+
   });
 });
 
 
-//Esc
-function setEscKey(section) {
-  document.addEventListener('keydown', (evt) => {
-    if (evt.key === 'Escape') {
-      hidePopup(section);
-    }
-  });
-};
+

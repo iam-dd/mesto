@@ -19,8 +19,6 @@ function validationInput(form, input, settings) {
   }
 };
 
-
-
 //Показываем ошибку
 
 function showError(form, input, settings) {
