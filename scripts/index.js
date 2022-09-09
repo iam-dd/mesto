@@ -9,11 +9,8 @@ const popupElements = document.querySelector('.popup_section_elements');
 const popupImage = document.querySelector('.popup_section_image');
 const imageInPopup = popupImage.querySelector('.popup__image');
 const titlePopupImage = popupImage.querySelector('.popup__title-image')
-<<<<<<< HEAD
-const popup = Array.from(document.querySelectorAll('.popup'));
-=======
 const popups = Array.from(document.querySelectorAll('.popup'));
->>>>>>> ref/js_validation
+
 
 //Title
 const titleText = document.querySelector('.profile__title');
@@ -83,20 +80,6 @@ function hidePopup(section) {
 //Popup open
 function openPopup(section) {
   section.classList.add('popup_opened');
-<<<<<<< HEAD
-  setEscKey(section);
-
-};
-
-//Close  buttons
-const closeButtons = document.querySelectorAll('.popup__button-close');
-closeButtons.forEach((button) => {
-  const popup = button.closest('.popup');
-  button.addEventListener('click', () => {
-    hidePopup(popup);
-
-  });
-=======
   document.addEventListener('keydown', closeByEscape);
   const inputs = Array.from(section.querySelectorAll('.popup__input'));
   const button = section.querySelector('.popup__button-submit');
@@ -116,7 +99,6 @@ popups.forEach((popup) => {
           hidePopup(popup)
         };
     });
->>>>>>> ref/js_validation
 });
 
 
@@ -189,25 +171,3 @@ initialCards.forEach((element) => {
   addCard(element.name, element.link);
 });
 
-<<<<<<< HEAD
-//Popup close overlay
-popup.forEach((element) => {
-  element.addEventListener('click', (evt) => {
-    const popupOverlay = evt.target;
-    hidePopup(popupOverlay);
-    
-  });
-});
-
-
-//Esc
-function setEscKey(section) {
-  document.addEventListener('keydown', (evt) => {
-    if (evt.key === 'Escape') {
-      hidePopup(section);
-    }
-  });
-};
-=======
-
->>>>>>> ref/js_validation

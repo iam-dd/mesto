@@ -19,26 +19,6 @@ function validationInput(form, input, settings) {
   }
 };
 
-<<<<<<< HEAD
-const setEventListeners = (formElement, settings) => {
-     toggleButtonState(formElement, settings);
-  settings.forEach((el) => {
-    el.addEventListener('input', () => {
-      isValid(formElement, settings);
-      toggleButtonState(settings, submitButtonSelector);
-    
-    });
-  });
-};
-
-const enableValidation = (settings) => {
-  settings.forEach((el) => {
-    el.addEventListener('submit', (evt) => {
-      evt.preventDefault();
-    });
-    setEventListeners(formElement, settings);
-    console.log(formElement, settings);
-=======
 //Показываем ошибку
 
 function showError(form, input, settings) {
@@ -81,7 +61,7 @@ const setEventListeners = (form, settings) => {
       validationInput(form, input, settings);
       toggleButtonState(inputs, button);
     });
->>>>>>> ref/js_validation
+
   });
 };
 
@@ -108,19 +88,10 @@ const toggleButtonState = (inputs, button) => {
   }
 };
 
-<<<<<<< HEAD
-enableValidation({
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button',
-  inactiveButtonClass: 'popup__button_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible'
-});
-=======
+
 
 enableValidation(settings);
->>>>>>> ref/js_validation
+
 
 
 
