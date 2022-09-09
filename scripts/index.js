@@ -151,7 +151,7 @@ initialCards.forEach((element) => {
 
 //Popup close overlay
 popup.forEach((element) => {
-  element.addEventListener('click', (evt) => {
+  element.addEventListener('mousedown', (evt) => {
     const popupOverlay = evt.target;
     hidePopup(popupOverlay);
     
