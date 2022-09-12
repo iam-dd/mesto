@@ -81,11 +81,6 @@ function hidePopup(section) {
 function openPopup(section) {
   section.classList.add('popup_opened');
   document.addEventListener('keydown', closeByEscape);
-  const inputs = Array.from(section.querySelectorAll('.popup__input'));
-  const button = section.querySelector('.popup__button-submit');
-  if (section !== popupImage) {
-    toggleButtonState(inputs, button);
-    }
 };
 
 
@@ -112,6 +107,9 @@ editButton.addEventListener('click', () => {
 //Add button
 addButton.addEventListener('click', () => {
   openPopup(popupElements);
+  const buttonSubmit = popupElements.querySelector('.popup__button-submit');
+  buttonSubmit.setAttribute('disabled', 'disabled');
+  buttonSubmit.classList.add('popup__button-submit_disable');
 });
 
 //Function Add cards
