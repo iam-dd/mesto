@@ -58,7 +58,26 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ];
+///////////////////////////////
 
+class Card {
+  constructor(data, selector) {
+this._name = data.name;
+this._link= data.link;
+  }
+  _getTemplate() {
+    const template = document.querySelector('.template');
+    const cardElement = template.content.cloneNode(true);
+    const itemName = cardElement.querySelector('.card__sign');
+    const itemImage = cardElement.querySelector('.card__image');
+  }
+  _createCard() {
+    
+    itemName = this._name;
+    itemImage = this._link;
+
+  }
+};
 
 //Esc
 function closeByEscape(evt) {
