@@ -1,4 +1,7 @@
 
+import {Validator} from './FormValidator.js';
+import {settings} from './constants.js';
+
 //Button
 const editButton = document.querySelector('.profile__edit-button');
 const addButton = document.querySelector('.profile__button');
@@ -100,6 +103,8 @@ popups.forEach((popup) => {
 //Edit button
 editButton.addEventListener('click', () => {
   openPopup(popupProfile);
+  const validator = new Validator(settings, formProfileAdd);
+  validator.enableValidation();
   inputName.value = titleText.textContent;
   inputAboutme.value = subtitleText.textContent;
 });
@@ -107,6 +112,9 @@ editButton.addEventListener('click', () => {
 //Add button
 addButton.addEventListener('click', () => {
   openPopup(popupElements);
+  const validator = new Validator(settings, formElementsAdd);
+  validator.enableValidation();
+
   const buttonSubmit = popupElements.querySelector('.popup__button-submit');
   buttonSubmit.setAttribute('disabled', 'disabled');
   buttonSubmit.classList.add('popup__button-submit_disable');
