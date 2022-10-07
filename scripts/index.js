@@ -72,6 +72,13 @@ addButton.addEventListener('click', () => {
   validatorFormElement.toggleButtonState();
 });
 
+// Новая карточка
+function createNewCard(data) {
+  const card = new Card(data, '.template, handleOpenPopup');
+  const cardElement = card.createCard();
+  return cardElement;
+}
+
 // Форма добавления новой карточки
 
 formElementsAdd.addEventListener('submit', (evt) => {
@@ -81,9 +88,8 @@ formElementsAdd.addEventListener('submit', (evt) => {
     name: inputTitle.value,
     link: inputLink.value
   };
-  const card = new Card(data, '.template');
-  const cardElement = card.createCard();
-  listElement.prepend(cardElement);
+
+  listElement.prepend(createNewCard(data));
   const button = formElementsAdd.querySelector('.popup__button-submit')
   hidePopup(popupElements);
   evt.target.reset();
@@ -100,8 +106,6 @@ formProfileAdd.addEventListener('submit', (evt) => {
 
 // Создаем карточки из массива
 initialCards.forEach((element) => {
-  const card = new Card(element, '.template', handleOpenPopup);
-  const cardElement = card.createCard();
-  listElement.append(cardElement);
+ listElement.append(createNewCard(element));
 });
 
