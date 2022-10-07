@@ -7,6 +7,15 @@ import { settings, initialCards, popups, editButton, addButton,
     , subtitleText } from './constants.js';
 import { Card } from './Card.js';
 
+
+// Вызов валидатора
+
+const validatorFormElement = new Validator(settings, formElementsAdd);
+validatorFormElement.enableValidation();
+
+const validatorFormProfile = new Validator(settings, formProfileAdd);
+validatorFormProfile.enableValidation();
+
 //Esc
 function closeByEscape(evt) {
   if (evt.key === 'Escape') {
@@ -52,8 +61,6 @@ popups.forEach((popup) => {
 // Кнопка редактировать
 editButton.addEventListener('click', () => {
   openPopup(popupProfile);
-  const validator = new Validator(settings, formProfileAdd);
-  validator.enableValidation();
   inputName.value = titleText.textContent;
   inputAboutme.value = subtitleText.textContent;
 });
@@ -61,9 +68,6 @@ editButton.addEventListener('click', () => {
 // Кнопка добавить
 addButton.addEventListener('click', () => {
   openPopup(popupElements);
-  const validator = new Validator(settings, formElementsAdd);
-  validator.enableValidation();
-
   const buttonSubmit = popupElements.querySelector('.popup__button-submit');
   buttonSubmit.setAttribute('disabled', 'disabled');
   buttonSubmit.classList.add('popup__button-submit_disable');
