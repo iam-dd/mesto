@@ -1,11 +1,14 @@
-import { popupImage, imageInPopup, titlePopupImage } from "./constants.js";
+import { popupImage, imageInPopup, titlePopupImage, formElementsAdd } from "./constants.js";
+import { handleOpenPopup } from './index.js'
 
 export class Card {
-  constructor(data, tmpSelector) {
+  constructor(data, tmpSelector, handleOpenPopup) {
     this._name = data.name;
     this._link = data.link;
     this._tmpSelector = tmpSelector;
-    
+    this._handleOpenPopup = handleOpenPopup;
+  
+
   }
 
   // Метод получения шаблона
@@ -17,15 +20,7 @@ export class Card {
       .cloneNode(true);
     return cardElement;
   }
-  
-  // Метод открытия попапа
-    _openPopup() {
-    popupImage.classList.add('popup_opened');
-    imageInPopup.src = this._link;
-    imageInPopup.alt = this._name;
-    titlePopupImage.textContent = this._name;
-  }
-  
+
   // Метод установки лайка
   _cardLike() {
     this._like = this._element.querySelector('.card__like');
@@ -36,13 +31,16 @@ export class Card {
   // Метод удаления карточки
   _cardDelete() {
     this._element.remove();
+    this._element = null;
+    
   }
 
- // Метод устанвки слушателей
+  // Метод устанвки слушателей
   _setEventListeners() {
-        this.cardImage.addEventListener('click', () => {
-        this._openPopup(popupImage);
-      });
+    this.cardImage.addEventListener('click', () => {
+           this._handleOpenPopup(this._link, this._name);
+      
+    });
 
     this._element
       .querySelector('.card__trash')
@@ -58,7 +56,7 @@ export class Card {
       })
   }
 
- // Метод создания карточки (публичный)
+  // Метод создания карточки (публичный)
   createCard() {
     this._element = this._getTemplate();
     this.cardImage = this._element.querySelector('.card__image');

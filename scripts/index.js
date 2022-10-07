@@ -1,6 +1,6 @@
 
-import {Validator} from './FormValidator.js';
-import {settings, initialCards, popups, editButton, addButton, formElementsAdd, formProfileAdd, popupElements, listElement, inputTitle, inputLink } from './constants.js';
+import { Validator } from './FormValidator.js';
+import { settings, initialCards, popups, editButton, addButton, formElementsAdd, formProfileAdd, popupElements, listElement, inputTitle, inputLink, popupImage, titlePopupImage,imageInPopup } from './constants.js';
 import { Card } from './Card.js';
 
 //Esc
@@ -26,17 +26,23 @@ function openPopup(section) {
   document.addEventListener('keydown', closeByEscape);
 };
 
+export function handleOpenPopup (link, name) {
+  imageInPopup.src = link;
+  imageInPopup.alt = name;
+  titlePopupImage.textContent = this._name;
+  openPopup(popupImage);
+}
 
 //Overlay && buttonClose
 popups.forEach((popup) => {
-    popup.addEventListener('mousedown', (evt) => {
-        if (evt.target.classList.contains('popup_opened')) {
-            hidePopup(popup)
-        }
-        if (evt.target.classList.contains('popup__button-close')) {
-          hidePopup(popup)
-        };
-    });
+  popup.addEventListener('mousedown', (evt) => {
+    if (evt.target.classList.contains('popup_opened')) {
+      hidePopup(popup)
+    }
+    if (evt.target.classList.contains('popup__button-close')) {
+      hidePopup(popup)
+    };
+  });
 });
 
 
@@ -65,8 +71,9 @@ addButton.addEventListener('click', () => {
 formElementsAdd.addEventListener('submit', (evt) => {
   evt.preventDefault();
   const data =
-  {name: inputTitle.value,
-  link: inputLink.value
+  {
+    name: inputTitle.value,
+    link: inputLink.value
   };
   const card = new Card(data, '.template');
   const cardElement = card.createCard();
@@ -87,7 +94,7 @@ formProfileAdd.addEventListener('submit', (evt) => {
 
 // Создаем карточки из массива
 initialCards.forEach((element) => {
-  const card = new Card(element, '.template');
+  const card = new Card(element, '.template', handleOpenPopup);
   const cardElement = card.createCard();
   listElement.append(cardElement);
 
