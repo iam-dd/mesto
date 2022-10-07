@@ -74,7 +74,7 @@ addButton.addEventListener('click', () => {
 
 // Новая карточка
 function createNewCard(data) {
-  const card = new Card(data, '.template, handleOpenPopup');
+  const card = new Card(data, '.template', handleOpenPopup);
   const cardElement = card.createCard();
   return cardElement;
 }
