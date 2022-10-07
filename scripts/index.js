@@ -88,9 +88,7 @@ formElementsAdd.addEventListener('submit', (evt) => {
     name: inputTitle.value,
     link: inputLink.value
   };
-
   listElement.prepend(createNewCard(data));
-  const button = formElementsAdd.querySelector('.popup__button-submit')
   hidePopup(popupElements);
   evt.target.reset();
 
