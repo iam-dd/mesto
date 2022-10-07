@@ -63,14 +63,13 @@ editButton.addEventListener('click', () => {
   openPopup(popupProfile);
   inputName.value = titleText.textContent;
   inputAboutme.value = subtitleText.textContent;
+  validatorFormProfile.toggleButtonState();
 });
 
 // Кнопка добавить
 addButton.addEventListener('click', () => {
   openPopup(popupElements);
-  const buttonSubmit = popupElements.querySelector('.popup__button-submit');
-  buttonSubmit.setAttribute('disabled', 'disabled');
-  buttonSubmit.classList.add('popup__button-submit_disable');
+  validatorFormElement.toggleButtonState();
 });
 
 // Форма добавления новой карточки

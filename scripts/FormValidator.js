@@ -53,7 +53,7 @@ _hideError(input) {
 
 // Метод изменения состояния кнопки submit
 
-_toggleButtonState() {
+toggleButtonState() {
     if (this._hasInvalidInput(this.inputs)) {
       
     this.button.classList.add(this.inactiveButtonClass);
@@ -70,11 +70,10 @@ _toggleButtonState() {
 // Метод установки слушателя на инпуты
 
 _setEventListeners() {
-  // const inputs = Array.from(this.element.querySelectorAll(this.inputSelector));
-  this.inputs.forEach((input) => {
+   this.inputs.forEach((input) => {
     input.addEventListener('input', () => {
       this._validationInput(input);
-      this._toggleButtonState(this.inputs);
+      this.toggleButtonState();
       
     });
 
