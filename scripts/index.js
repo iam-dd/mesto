@@ -40,12 +40,11 @@ export function handleOpenPopup (link, name) {
 //Overlay && buttonClose
 popups.forEach((popup) => {
   popup.addEventListener('mousedown', (evt) => {
-    if (evt.target.classList.contains('popup_opened')) {
+    if (evt.target.classList.contains('popup_opened')
+     ||
+      evt.target.classList.contains('popup__button-close')) {
       hidePopup(popup)
-    }
-    if (evt.target.classList.contains('popup__button-close')) {
-      hidePopup(popup)
-    };
+     };
   });
 });
 
