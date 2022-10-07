@@ -1,67 +1,7 @@
 
 import {Validator} from './FormValidator.js';
-import {settings} from './constants.js';
-
-//Button
-const editButton = document.querySelector('.profile__edit-button');
-const addButton = document.querySelector('.profile__button');
-
-//Popup
-const popupProfile = document.querySelector('.popup_section_profile');
-const popupElements = document.querySelector('.popup_section_elements');
-const popupImage = document.querySelector('.popup_section_image');
-const imageInPopup = popupImage.querySelector('.popup__image');
-const titlePopupImage = popupImage.querySelector('.popup__title-image')
-const popups = Array.from(document.querySelectorAll('.popup'));
-
-
-//Title
-const titleText = document.querySelector('.profile__title');
-const subtitleText = document.querySelector('.profile__subtitle');
-
-//Form
-const formProfileAdd = document.querySelector('.popup__form_section_profile');
-const formElementsAdd = document.querySelector('.popup__form_section_elements');
-
-//Input
-const inputName = formProfileAdd.querySelector('.popup__input_field_name');
-const inputAboutme = formProfileAdd.querySelector('.popup__input_field_aboutme');
-const inputTitle = formElementsAdd.querySelector('.popup__input_field_title');
-const inputLink = formElementsAdd.querySelector('.popup__input_field_link');
-
-const listElement = document.querySelector('.elements');
-const template = document.querySelector('.template');
-
-
-
-//Cards Array
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
+import {settings, initialCards, popups, editButton, addButton, formElementsAdd, formProfileAdd, popupElements, listElement, inputTitle, inputLink } from './constants.js';
+import { Card } from './Card.js';
 
 //Esc
 function closeByEscape(evt) {
@@ -100,7 +40,7 @@ popups.forEach((popup) => {
 });
 
 
-//Edit button
+// Кнопка редактировать
 editButton.addEventListener('click', () => {
   openPopup(popupProfile);
   const validator = new Validator(settings, formProfileAdd);
@@ -109,7 +49,7 @@ editButton.addEventListener('click', () => {
   inputAboutme.value = subtitleText.textContent;
 });
 
-//Add button
+// Кнопка добавить
 addButton.addEventListener('click', () => {
   openPopup(popupElements);
   const validator = new Validator(settings, formElementsAdd);
@@ -120,52 +60,24 @@ addButton.addEventListener('click', () => {
   buttonSubmit.classList.add('popup__button-submit_disable');
 });
 
-//Function Add cards
-
-function addCard(itemTitle, itemLink) {
-  const card = createCard(itemTitle, itemLink)
-  listElement.prepend(card);
-};
-
-function createCard(itemTitle, itemLink) {
-  const newCard = template.content.cloneNode(true);
-  const cardImage = newCard.querySelector('.card__image');
-  cardImage.setAttribute('src', itemLink);
-  cardImage.setAttribute('alt', itemTitle);
-  newCard.querySelector('.card__location').textContent = itemTitle;
-  newCard.querySelector('.card__trash').addEventListener('click', (evt) => {
-    const cardToDel = evt.target.closest('.card');
-    cardToDel.remove();
-  });
-  cardImage.addEventListener('click', () => {
-    openPopup(popupImage);
-    imageInPopup.setAttribute('src', itemLink);
-    imageInPopup.setAttribute('alt', itemTitle);
-    titlePopupImage.textContent = itemTitle;
-  });
-  newCard.querySelector('.card__like').addEventListener('click', (evt) => {
-    const likeButton = evt.target
-    likeButton.classList.toggle('card__like_state_active');
-    likeButton.classList.toggle('card__like_state_hover');
-  });
-
-  return (newCard);
-};
-
-//Form add new card(element)
+// Форма добавления новой карточки
 
 formElementsAdd.addEventListener('submit', (evt) => {
   evt.preventDefault();
-  const itemTitle = inputTitle.value;
-  const itemLink = inputLink.value;
+  const data =
+  {name: inputTitle.value,
+  link: inputLink.value
+  };
+  const card = new Card(data, '.template');
+  const cardElement = card.createCard();
+  listElement.prepend(cardElement);
   const button = formElementsAdd.querySelector('.popup__button-submit')
-  addCard(itemTitle, itemLink);
   hidePopup(popupElements);
   evt.target.reset();
 
 });
 
-//Form add New Profile
+// Форма добавления профайла
 formProfileAdd.addEventListener('submit', (evt) => {
   evt.preventDefault();
   titleText.textContent = inputName.value;
@@ -173,7 +85,12 @@ formProfileAdd.addEventListener('submit', (evt) => {
   hidePopup(popupProfile);
 });
 
+// Создаем карточки из массива
 initialCards.forEach((element) => {
-  addCard(element.name, element.link);
+  const card = new Card(element, '.template');
+  const cardElement = card.createCard();
+  listElement.append(cardElement);
+
+
 });
 
