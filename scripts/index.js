@@ -1,6 +1,10 @@
 
 import { Validator } from './FormValidator.js';
-import { settings, initialCards, popups, editButton, addButton, formElementsAdd, formProfileAdd, popupElements, listElement, inputTitle, inputLink, popupImage, titlePopupImage,imageInPopup } from './constants.js';
+import { settings, initialCards, popups, editButton, addButton,
+   formElementsAdd, formProfileAdd, popupElements, listElement,
+    inputTitle, inputLink, popupImage, titlePopupImage, imageInPopup,
+     popupProfile, inputName, titleText, inputAboutme
+    , subtitleText } from './constants.js';
 import { Card } from './Card.js';
 
 //Esc
@@ -97,7 +101,5 @@ initialCards.forEach((element) => {
   const card = new Card(element, '.template', handleOpenPopup);
   const cardElement = card.createCard();
   listElement.append(cardElement);
-
-
 });
 

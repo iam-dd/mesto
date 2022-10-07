@@ -11,6 +11,7 @@ export class Validator {
     this.errorClass = settings.errorClass;
     this.element = element;
     this.button = this.element.querySelector(this.submitButtonSelector);
+    this.inputs = Array.from(this.element.querySelectorAll(this.inputSelector));
   }
 
   // Метод валидации инпутов
@@ -52,8 +53,8 @@ _hideError(input) {
 
 // Метод изменения состояния кнопки submit
 
-_toggleButtonState(inputs) {
-    if (this._hasInvalidInput(inputs)) {
+_toggleButtonState() {
+    if (this._hasInvalidInput(this.inputs)) {
       
     this.button.classList.add(this.inactiveButtonClass);
     this.button.disabled = true;
@@ -69,11 +70,11 @@ _toggleButtonState(inputs) {
 // Метод установки слушателя на инпуты
 
 _setEventListeners() {
-  const inputs = Array.from(this.element.querySelectorAll(this.inputSelector));
-  inputs.forEach((input) => {
+  // const inputs = Array.from(this.element.querySelectorAll(this.inputSelector));
+  this.inputs.forEach((input) => {
     input.addEventListener('input', () => {
       this._validationInput(input);
-      this._toggleButtonState(inputs);
+      this._toggleButtonState(this.inputs);
       
     });
 
