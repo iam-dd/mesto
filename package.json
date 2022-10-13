@@ -1,0 +1,19 @@
+{
+  "name": "mesto",
+  "version": "0.0.1",
+  "description": "* [Перейти к проекту](https://iam-dd.github.io/mesto/)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iam-dd/mesto.git"
+  },
+  "author": "DDemchenko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iam-dd/mesto/issues"
+  },
+  "homepage": "https://github.com/iam-dd/mesto#readme"
+}

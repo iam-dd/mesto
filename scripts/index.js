@@ -1,11 +1,15 @@
 
 import { Validator } from './FormValidator.js';
-import { settings, initialCards, popups, editButton, addButton,
-   formElementsAdd, formProfileAdd, popupElements, listElement,
-    inputTitle, inputLink, popupImage, titlePopupImage, imageInPopup,
-     popupProfile, inputName, titleText, inputAboutme
-    , subtitleText } from './constants.js';
+import {
+  settings, initialCards, popups, editButton, addButton,
+  formElementsAdd, formProfileAdd, popupElements, listElement,
+  inputTitle, inputLink, popupImage, titlePopupImage, imageInPopup,
+  popupProfile, inputName, titleText, inputAboutme
+  , subtitleText
+} from './constants.js';
 import { Card } from './Card.js';
+import { Section } from './Section.js';
+import { Popup } from './Popup.js';
 
 
 // Вызов валидатора
@@ -17,7 +21,7 @@ const validatorFormProfile = new Validator(settings, formProfileAdd);
 validatorFormProfile.enableValidation();
 
 //Esc
-function closeByEscape(evt) {
+export function closeByEscape(evt) {
   if (evt.key === 'Escape') {
     const popupOpened = document.querySelector('.popup_opened');
     hidePopup(popupOpened);
@@ -25,37 +29,13 @@ function closeByEscape(evt) {
 };
 
 
-//Popup hide
-function hidePopup(section) {
-  section.classList.remove('popup_opened');
-  document.removeEventListener('keydown', closeByEscape);
-};
-
-
-
-//Popup open
-function openPopup(section) {
-  section.classList.add('popup_opened');
-  document.addEventListener('keydown', closeByEscape);
-};
-
-export function handleOpenPopup (link, name) {
+export function handleOpenPopup(link, name) {
   imageInPopup.src = link;
   imageInPopup.alt = name;
   titlePopupImage.textContent = this._name;
   openPopup(popupImage);
 }
 
-//Overlay && buttonClose
-popups.forEach((popup) => {
-  popup.addEventListener('mousedown', (evt) => {
-    if (evt.target.classList.contains('popup_opened')
-     ||
-      evt.target.classList.contains('popup__button-close')) {
-      hidePopup(popup)
-     };
-  });
-});
 
 
 // Кнопка редактировать
@@ -68,16 +48,17 @@ editButton.addEventListener('click', () => {
 
 // Кнопка добавить
 addButton.addEventListener('click', () => {
-  openPopup(popupElements);
+  const popupElementsOpen = new Popup ('.popup_section_elements');
+  popupElementsOpen.openPopup();
   validatorFormElement.toggleButtonState();
 });
 
 // Новая карточка
-function createNewCard(data) {
-  const card = new Card(data, '.template', handleOpenPopup);
-  const cardElement = card.createCard();
-  return cardElement;
-}
+// function createNewCard(data) {
+//   const card = new Card(data, '.template', handleOpenPopup);
+//   const cardElement = card.createCard();
+//   return cardElement;
+// }
 
 // Форма добавления новой карточки
 
@@ -102,8 +83,15 @@ formProfileAdd.addEventListener('submit', (evt) => {
   hidePopup(popupProfile);
 });
 
-// Создаем карточки из массива
-initialCards.forEach((element) => {
- listElement.append(createNewCard(element));
-});
+
+const cardList = new Section({
+  items: initialCards,
+  renderer: (cardItem) => {
+    const card = new Card(cardItem, '.template', handleOpenPopup);
+    const cardElement = card.createCard();
+    cardList.addItem(cardElement)
+  }
+},
+  '.elements');
+cardList.renderItems();
 
