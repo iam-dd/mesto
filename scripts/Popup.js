@@ -1,5 +1,3 @@
-import { closeByEscape } from './index.js';
-
 export class Popup {
   constructor(popupSelector) {
     this._popupSelector = document.querySelector(popupSelector);
@@ -8,7 +6,7 @@ export class Popup {
 
   closePopup() {
     this._popupSelector.classList.remove('popup_opened');
-    document.removeEventListener('keydown', closeByEscape);
+    this._handleEscClose();
   }
 
   openPopup() {
@@ -18,7 +16,11 @@ export class Popup {
   }
 
   _handleEscClose() {
-    document.addEventListener('keydown', closeByEscape);
+    document.addEventListener('keydown', (evt) => {
+     if (evt.key === 'Escape') {
+    this._popupSelector.classList.remove('popup_opened')
+   };
+  });
   }
 
   setEventListeners() {

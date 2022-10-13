@@ -8,8 +8,7 @@ export class PopupWithImage extends Popup {
     image.src = link;
     image.alt = name;
     titleImage.textContent = name;
-    console.log(link, name)
-
+    
     super.openPopup();
   }
 

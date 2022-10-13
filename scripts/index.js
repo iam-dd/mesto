@@ -22,21 +22,12 @@ const validatorFormProfile = new Validator(settings, formProfileAdd);
 validatorFormProfile.enableValidation();
 
 //Esc
-export function closeByEscape(evt) {
-  if (evt.key === 'Escape') {
-    const popupOpened = document.querySelector('.popup_opened');
-    hidePopup(popupOpened);
-  };
-};
-
-
-// export function handleOpenPopup(link, name) {
-//   imageInPopup.src = link;
-//   imageInPopup.alt = name;
-//   titlePopupImage.textContent = this._name;
-//  }
-
-
+// export function closeByEscape(evt) {
+//   if (evt.key === 'Escape') {
+//     const popupOpened = document.querySelector('.popup_opened');
+//     hidePopup(popupOpened);
+//   };
+// };
 
 // Кнопка редактировать
 editButton.addEventListener('click', () => {
