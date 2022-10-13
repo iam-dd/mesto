@@ -6,7 +6,6 @@ export class Popup {
 
   }
 
-
   closePopup() {
     this._popupSelector.classList.remove('popup_opened');
     document.removeEventListener('keydown', closeByEscape);

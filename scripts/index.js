@@ -12,6 +12,7 @@ import { Section } from './Section.js';
 import { Popup } from './Popup.js';
 
 
+
 // Вызов валидатора
 
 const validatorFormElement = new Validator(settings, formElementsAdd);
@@ -29,12 +30,11 @@ export function closeByEscape(evt) {
 };
 
 
-export function handleOpenPopup(link, name) {
-  imageInPopup.src = link;
-  imageInPopup.alt = name;
-  titlePopupImage.textContent = this._name;
-  openPopup(popupImage);
-}
+// export function handleOpenPopup(link, name) {
+//   imageInPopup.src = link;
+//   imageInPopup.alt = name;
+//   titlePopupImage.textContent = this._name;
+//  }
 
 
 
@@ -87,7 +87,7 @@ formProfileAdd.addEventListener('submit', (evt) => {
 const cardList = new Section({
   items: initialCards,
   renderer: (cardItem) => {
-    const card = new Card(cardItem, '.template', handleOpenPopup);
+    const card = new Card(cardItem, '.template');
     const cardElement = card.createCard();
     cardList.addItem(cardElement)
   }
