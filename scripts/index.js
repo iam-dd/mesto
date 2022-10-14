@@ -10,6 +10,7 @@ import {
 import { Card } from './Card.js';
 import { Section } from './Section.js';
 import { Popup } from './Popup.js';
+import { PopupWithForm } from './PopupWithForm.js';
 
 
 
@@ -21,14 +22,6 @@ validatorFormElement.enableValidation();
 const validatorFormProfile = new Validator(settings, formProfileAdd);
 validatorFormProfile.enableValidation();
 
-//Esc
-// export function closeByEscape(evt) {
-//   if (evt.key === 'Escape') {
-//     const popupOpened = document.querySelector('.popup_opened');
-//     hidePopup(popupOpened);
-//   };
-// };
-
 // Кнопка редактировать
 editButton.addEventListener('click', () => {
   openPopup(popupProfile);
@@ -37,32 +30,16 @@ editButton.addEventListener('click', () => {
   validatorFormProfile.toggleButtonState();
 });
 
-// Кнопка добавить
-addButton.addEventListener('click', () => {
-  const popupElementsOpen = new Popup ('.popup_section_elements');
-  popupElementsOpen.openPopup();
-  validatorFormElement.toggleButtonState();
+// Добавление карточки из формы
+const addNewCard = new PopupWithForm('.popup_section_elements', (data) => {
+  const card = new Card(data, '.template');
+  listElement.prepend(card.createCard());
 });
 
-// Новая карточка
-// function createNewCard(data) {
-//   const card = new Card(data, '.template', handleOpenPopup);
-//   const cardElement = card.createCard();
-//   return cardElement;
-// }
-
-// Форма добавления новой карточки
-
-formElementsAdd.addEventListener('submit', (evt) => {
-  evt.preventDefault();
-  const data =
-  {
-    name: inputTitle.value,
-    link: inputLink.value
-  };
-  listElement.prepend(createNewCard(data));
-  hidePopup(popupElements);
-  evt.target.reset();
+// Кнопка добавить
+addButton.addEventListener('click', () => {
+  validatorFormElement.toggleButtonState();
+  addNewCard.openPopup();
 
 });
 
@@ -74,7 +51,7 @@ formProfileAdd.addEventListener('submit', (evt) => {
   hidePopup(popupProfile);
 });
 
-
+// Добавляем карточки из массива
 const cardList = new Section({
   items: initialCards,
   renderer: (cardItem) => {
@@ -85,4 +62,5 @@ const cardList = new Section({
 },
   '.elements');
 cardList.renderItems();
+
 
