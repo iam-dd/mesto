@@ -11,6 +11,7 @@ import { Card } from './Card.js';
 import { Section } from './Section.js';
 import { Popup } from './Popup.js';
 import { PopupWithForm } from './PopupWithForm.js';
+import { UserInfo } from './UserInfo.js';
 
 
 
@@ -22,13 +23,18 @@ validatorFormElement.enableValidation();
 const validatorFormProfile = new Validator(settings, formProfileAdd);
 validatorFormProfile.enableValidation();
 
-// Кнопка редактировать
+// Кнопка вызова формы добавления профайла
+
 editButton.addEventListener('click', () => {
-  openPopup(popupProfile);
-  inputName.value = titleText.textContent;
-  inputAboutme.value = subtitleText.textContent;
+  const selectors = {
+    name: inputName,
+    aboutme: inputAboutme
+  }
+  const newProfile = new UserInfo('.popup_section_profile', selectors);
+  newProfile.openPopup();
   validatorFormProfile.toggleButtonState();
 });
+
 
 // Добавление карточки из формы
 const addNewCard = new PopupWithForm('.popup_section_elements', (data) => {
@@ -43,13 +49,13 @@ addButton.addEventListener('click', () => {
 
 });
 
-// Форма добавления профайла
-formProfileAdd.addEventListener('submit', (evt) => {
-  evt.preventDefault();
-  titleText.textContent = inputName.value;
-  subtitleText.textContent = inputAboutme.value;
-  hidePopup(popupProfile);
-});
+// // Форма добавления профайла
+// formProfileAdd.addEventListener('submit', (evt) => {
+//   evt.preventDefault();
+//   titleText.textContent = inputName.value;
+//   subtitleText.textContent = inputAboutme.value;
+//   hidePopup(popupProfile);
+// });
 
 // Добавляем карточки из массива
 const cardList = new Section({

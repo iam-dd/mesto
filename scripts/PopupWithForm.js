@@ -11,7 +11,6 @@ export class PopupWithForm extends Popup {
 
   _getInputValues() {
     const inputValues = {
-      // name: this._formSelector.getElementsByTagName('input')[0].value,
       name: this._formSelector.getElementsByTagName('input')[0].value,
       link: this._formSelector.getElementsByTagName('input')[1].value
     }
