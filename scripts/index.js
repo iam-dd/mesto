@@ -1,19 +1,16 @@
 
 import { Validator } from './FormValidator.js';
 import {
-  settings, initialCards, popups, editButton, addButton,
-  formElementsAdd, formProfileAdd, popupElements, listElement,
-  inputTitle, inputLink, popupImage, titlePopupImage, imageInPopup,
-  popupProfile, inputName, titleText, inputAboutme
-  , subtitleText
+  settings, initialCards, editButton, addButton,
+  formElementsAdd, formProfileAdd, listElement,
+  inputName, inputAboutme
 } from './constants.js';
+
 import { Card } from './Card.js';
 import { Section } from './Section.js';
-import { Popup } from './Popup.js';
 import { PopupWithForm } from './PopupWithForm.js';
 import { UserInfo } from './UserInfo.js';
-
-
+import { PopupWithImage } from './PopupWithImage.js';
 
 // Вызов валидатора
 
@@ -26,42 +23,37 @@ validatorFormProfile.enableValidation();
 // Кнопка вызова формы добавления профайла
 
 editButton.addEventListener('click', () => {
-  const selectors = {
-    name: inputName,
-    aboutme: inputAboutme
-  }
+  const selectors = { name: inputName, aboutme: inputAboutme }
   const newProfile = new UserInfo('.popup_section_profile', selectors);
   newProfile.openPopup();
   validatorFormProfile.toggleButtonState();
 });
 
-
-// Добавление карточки из формы
-const addNewCard = new PopupWithForm('.popup_section_elements', (data) => {
-  const card = new Card(data, '.template');
-  listElement.prepend(card.createCard());
+// Кнопка вызова формы добавления карточки
+const popupAddCard = new PopupWithForm('.popup_section_elements', (data) => {
+  const card = new Card(data, '.template', (name, link) => {
+    const PopupImageOpen = new PopupWithImage('.popup_section_image');
+    PopupImageOpen.openPopup(name, link);
+  });
+  const renderCard = card.createCard()
+  listElement.prepend(renderCard);
 });
 
-// Кнопка добавить
 addButton.addEventListener('click', () => {
   validatorFormElement.toggleButtonState();
-  addNewCard.openPopup();
-
+  popupAddCard.openPopup();
 });
-
-// // Форма добавления профайла
-// formProfileAdd.addEventListener('submit', (evt) => {
-//   evt.preventDefault();
-//   titleText.textContent = inputName.value;
-//   subtitleText.textContent = inputAboutme.value;
-//   hidePopup(popupProfile);
-// });
+popupAddCard.setEventListeners();
 
 // Добавляем карточки из массива
+
 const cardList = new Section({
   items: initialCards,
   renderer: (cardItem) => {
-    const card = new Card(cardItem, '.template');
+    const card = new Card(cardItem, '.template', (name, link) => {
+        const PopupImageOpen = new PopupWithImage('.popup_section_image');
+        PopupImageOpen.openPopup(name, link);
+    });
     const cardElement = card.createCard();
     cardList.addItem(cardElement)
   }

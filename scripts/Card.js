@@ -1,12 +1,10 @@
-import { popupImage, imageInPopup, titlePopupImage, formElementsAdd } from "./constants.js";
-import { PopupWithImage } from "./PopupWithImage.js";
-
 export class Card {
-  constructor(data, tmpSelector) {
+  constructor(data, tmpSelector, handleCardClick) {
     this._name = data.name;
     this._link = data.link;
     this._tmpSelector = tmpSelector;
-   
+    this.handleCardClick = handleCardClick;
+
   }
 
   // Метод получения шаблона
@@ -33,20 +31,13 @@ export class Card {
 
   }
 
-  // Метод открытия попапа
-  openPopupImage() {
-    const PopupImageOpen = new PopupWithImage('.popup_section_image');
-    PopupImageOpen.openPopup(this._name, this._link);
-    };
-
-
   // Метод устанвки слушателей
   _setEventListeners() {
     this.cardImage.addEventListener('click', () => {
-      this.openPopupImage();
+      this.handleCardClick(this._name, this._link);
     });
 
-  
+
 
     this._element
       .querySelector('.card__trash')
