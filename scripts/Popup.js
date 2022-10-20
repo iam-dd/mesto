@@ -12,7 +12,6 @@ export class Popup {
   openPopup() {
     this._popupSelector.classList.add('popup_opened');
     this._handleEscClose();
-    this.setEventListeners();
   }
 
   _handleEscClose() {

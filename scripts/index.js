@@ -34,14 +34,17 @@ const popupAddCard = new PopupWithForm('.popup_section_elements', (data) => {
   const card = new Card(data, '.template', (name, link) => {
     const PopupImageOpen = new PopupWithImage('.popup_section_image');
     PopupImageOpen.openPopup(name, link);
+    PopupImageOpen.setEventListeners();
   });
   const renderCard = card.createCard()
   listElement.prepend(renderCard);
 });
 
+
 addButton.addEventListener('click', () => {
   validatorFormElement.toggleButtonState();
   popupAddCard.openPopup();
+  
 });
 popupAddCard.setEventListeners();
 
@@ -53,6 +56,7 @@ const cardList = new Section({
     const card = new Card(cardItem, '.template', (name, link) => {
         const PopupImageOpen = new PopupWithImage('.popup_section_image');
         PopupImageOpen.openPopup(name, link);
+        PopupImageOpen.setEventListeners();
     });
     const cardElement = card.createCard();
     cardList.addItem(cardElement)

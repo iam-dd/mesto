@@ -4,7 +4,6 @@ export class Card {
     this._link = data.link;
     this._tmpSelector = tmpSelector;
     this.handleCardClick = handleCardClick;
-
   }
 
   // Метод получения шаблона
@@ -28,7 +27,6 @@ export class Card {
   _cardDelete() {
     this._element.remove();
     this._element = null;
-
   }
 
   // Метод устанвки слушателей
@@ -36,8 +34,6 @@ export class Card {
     this.cardImage.addEventListener('click', () => {
       this.handleCardClick(this._name, this._link);
     });
-
-
 
     this._element
       .querySelector('.card__trash')
