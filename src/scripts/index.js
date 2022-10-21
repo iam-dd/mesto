@@ -54,9 +54,9 @@ popupAddCard.setEventListeners();
 const cardList = new Section({
   items: initialCards,
   renderer: (cardItem) => {
-    const card = new Card(cardItem, '.template', (name, link) => {
-        const PopupImageOpen = new PopupWithImage('.popup_section_image');
-        PopupImageOpen.openPopup(name, link);
+    const card = new Card(cardItem, '.template', (cardItem) => {
+        const PopupImageOpen = new PopupWithImage('.popup_section_image', cardItem);
+        PopupImageOpen.openPopup();
         PopupImageOpen.setEventListeners();
     });
     const cardElement = card.createCard();
