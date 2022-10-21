@@ -1,4 +1,5 @@
 
+import '../pages/index.css';
 import { Validator } from './FormValidator.js';
 import {
   settings, initialCards, editButton, addButton,
