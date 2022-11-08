@@ -5,13 +5,14 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   mode: 'production',
-  entry: {main: './src/scripts/index.js'},
+  entry: {main: './src/pages/index.js'},
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'main.js',
     publicPath: ''
   },
   mode: 'development',
+  devtool: "inline-source-map",
   devServer: {
     static: path.resolve(__dirname, './dist'),
     compress: true,
@@ -40,9 +41,13 @@ module.exports = {
         // при обработке этих файлов нужно использовать
         // MiniCssExtractPlugin.loader и css-loader
         use: [MiniCssExtractPlugin.loader, {
-          loader: 'css-loader'
-        }]
+          loader: 'css-loader',
+          options: { importLoaders: 1 }
+        },
+          'postcss-loader'
+        ]
       }
+
       ]
   },
 

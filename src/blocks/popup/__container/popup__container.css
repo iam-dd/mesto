@@ -3,8 +3,8 @@
   margin: auto;
   display: flex;
   flex-direction: column;
-  justify-content: end;
-  align-items: start;
+  justify-content: flex-end;
+  align-items: flex-start;
   border-radius: 10px;
 
 }

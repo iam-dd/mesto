@@ -1,4 +1,4 @@
-import {settings} from './constants.js';
+import {settings} from '../utils/constants';
 
 export class Validator {
 

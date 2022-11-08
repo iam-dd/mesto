@@ -1,5 +1,5 @@
-import { titleText, subtitleText } from './constants.js';
-import { Popup } from './Popup.js';
+import { titleText, subtitleText } from '../utils/constants.js';
+import { Popup } from '../components/Popup.js';
 
 export class UserInfo extends Popup {
   constructor(popupSelector, selectors) {

@@ -10,7 +10,7 @@
   left: 0;
   display: flex;
   justify-content: center;
-  align-items: start;
+  align-items: flex-start;
   animation-name: popup__animation 1s linear;
   animation-play-state: paused;
 
