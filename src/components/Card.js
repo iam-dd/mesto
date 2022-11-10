@@ -1,15 +1,15 @@
 export class Card {
-  constructor({name, link}, tmpSelector, handleCardClick) {
+  constructor({ name, link }, templateSelector, handleCardClick) {
     this._name = name;
     this._link = link;
-    this._tmpSelector = tmpSelector;
+    this._templateSelector = templateSelector;
     this.handleCardClick = handleCardClick;
   }
 
   // Метод получения шаблона
   _getTemplate() {
     const cardElement = document
-      .querySelector(this._tmpSelector)
+      .querySelector(this._templateSelector)
       .content
       .querySelector('.card')
       .cloneNode(true);
@@ -17,14 +17,14 @@ export class Card {
   }
 
   // Метод установки лайка
-  _cardLike() {
+  _handleCardLike() {
     this._like = this._element.querySelector('.card__like');
     this._like.classList.toggle('card__like_state_active');
     this._like.classList.toggle('card__like_state_hover');
   }
 
   // Метод удаления карточки
-  _cardDelete() {
+  _handleCardDelete() {
     this._element.remove();
     this._element = null;
   }
@@ -38,14 +38,14 @@ export class Card {
     this._element
       .querySelector('.card__trash')
       .addEventListener('click', (evt) => {
-        this._cardDelete();
+        this._handleCardDelete();
 
       });
 
     this._element
       .querySelector('.card__like')
       .addEventListener('click', () => {
-        this._cardLike();
+        this._handleCardLike();
       })
   }
 

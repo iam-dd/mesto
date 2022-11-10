@@ -4,7 +4,7 @@ import { Validator } from '../components/FormValidator';
 import {
   settings, initialCards, editButton, addButton,
   formElementsAdd, formProfileAdd, listElement,
-  inputName, inputAboutme, inputTitle, inputLink,
+  inputName, inputAboutme, inputTitle, inputLink, titleText, subtitleText
 } from '../utils/constants.js';
 
 import { Card } from '../components/Card.js';
@@ -33,18 +33,20 @@ const addUserData = () => {
   inputName.value = newProfile.getUserInfo().titleData;
   inputAboutme.value = newProfile.getUserInfo().subtitleData;
 }
-const popupAddProfile = new PopupWithForm('.popup_section_profile')
+
+const popupAddProfile = new PopupWithForm('.popup_section_profile', (dataInputs) => {
+  titleText.textContent = dataInputs.name
+  subtitleText.textContent = dataInputs.link
+
+})
 
 
 editButton.addEventListener('click', () => {
+  validatorFormProfile.toggleButtonState();
   popupAddProfile.openPopup();
   addUserData();
-
-  validatorFormProfile.toggleButtonState();
+  popupAddProfile.setEventListeners();
 });
-
-
-
 
 
 const popupAddCard = new PopupWithForm('.popup_section_elements', (dataInputs) => {
@@ -56,9 +58,9 @@ const popupAddCard = new PopupWithForm('.popup_section_elements', (dataInputs) =
 addButton.addEventListener('click', () => {
   validatorFormCard.toggleButtonState();
   popupAddCard.openPopup();
-
+  popupAddCard.setEventListeners();
 });
-popupAddCard.setEventListeners();
+
 
 
 // Функция создания карточки
