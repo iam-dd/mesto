@@ -1,40 +1,25 @@
-import { titleText, subtitleText } from '../utils/constants.js';
-import { Popup } from '../components/Popup.js';
+// import { titleText, subtitleText } from '../utils/constants.js';
+import { inputName, inputAboutme } from '../utils/constants.js';
 
-export class UserInfo extends Popup {
-  constructor(popupSelector, selectors) {
-    super(popupSelector);
-    this._name = selectors.name;
-    this._aboutme = selectors.aboutme;
+
+export class UserInfo {
+  constructor(selectors) {
+    this._title = document.querySelector(selectors.title);
+    this._subtitle = document.querySelector(selectors.subtitle);
   }
 
   setUserInfo() {
-    const data = {
-      name: this._name.value,
-      aboutme: this._aboutme.value
-    }
-    return data;
+    this._title.textContent = inputName.value;
+    this._subtitle.textContent = inputAboutme.value;
+
   }
 
   getUserInfo() {
-    this._name.value = titleText.textContent;
-    this._aboutme.value = subtitleText.textContent;
-
-  }
-  openPopup() {
-    super.openPopup();
-    this.getUserInfo();
-    this.setEventListeners();
-    super.setEventListeners();
-  }
-  setEventListeners() {
-    const button = document.querySelector('.popup__button-submit');
-    button.addEventListener('click', (evt) => {
-      titleText.textContent = this.setUserInfo().name;
-      subtitleText.textContent = this.setUserInfo().aboutme;
-      this.closePopup();
-    });
-
+    const userData = {
+      titleData: this._title.textContent,
+      subtitleData: this._subtitle.textContent
+    }
+    return userData;
   }
 
 }
