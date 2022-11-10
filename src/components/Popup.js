@@ -11,16 +11,14 @@ export class Popup {
 
   openPopup() {
     this._popup.classList.add('popup_opened');
-    this.setEventListeners();
   }
 
   _handleEscClose = (event) => {
     if (event.key === 'Escape') {
-      console.log(this.closePopup, 'hello')
       this.closePopup();
-      
+
     }
-   
+
   }
 
   _handleMousedownClose = (event) => {

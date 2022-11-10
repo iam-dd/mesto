@@ -39,7 +39,7 @@ const popupAddProfile = new PopupWithForm('.popup_section_profile')
 editButton.addEventListener('click', () => {
   popupAddProfile.openPopup();
   addUserData();
-  
+
   validatorFormProfile.toggleButtonState();
 });
 
@@ -56,7 +56,6 @@ const popupAddCard = new PopupWithForm('.popup_section_elements', (dataInputs) =
 addButton.addEventListener('click', () => {
   validatorFormCard.toggleButtonState();
   popupAddCard.openPopup();
-  popupAddCard.setEventListeners();
 
 });
 popupAddCard.setEventListeners();
