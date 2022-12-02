@@ -34,10 +34,12 @@ const addUserData = () => {
   inputAboutme.value = newProfile.getUserInfo().subtitleData;
 }
 
-const popupAddProfile = new PopupWithForm('.popup_section_profile', (dataInputs) => {
+const popupAddProfile = new PopupWithForm({
+  popupSelector: '.popup_section_profile',
+  handleSubmitForm: (dataInputs) => {
   titleText.textContent = dataInputs.name
-  subtitleText.textContent = dataInputs.link
-
+  subtitleText.textContent = dataInputs.aboutme
+  }
 })
 
 
@@ -49,9 +51,12 @@ editButton.addEventListener('click', () => {
 });
 
 
-const popupAddCard = new PopupWithForm('.popup_section_elements', (dataInputs) => {
-  cardList.addItem(createNewCard(dataInputs))
-})
+const popupAddCard = new PopupWithForm({
+  popupSelector: '.popup_section_elements',
+  handleSubmitForm: (dataInputs) => {
+    cardList.addItem(createNewCard({name: dataInputs.name, link: dataInputs.link}));
+    },
+});
 
 // Кнопка вызова попапа добавления карточки
 
@@ -64,11 +69,11 @@ addButton.addEventListener('click', () => {
 
 
 // Функция создания карточки
-const createNewCard = function (data) {
+function createNewCard(data) {
   const card = new Card(data, '.template', () => {
     { popupWithImage.openPopup(data) }
   }).createCard();
-  return card;
+   return card;
 }
 
 // Попап с картинкой
@@ -78,11 +83,14 @@ popupWithImage.setEventListeners();
 // Слой добавления карточек в разметку
 const cardList = new Section({
   items: initialCards,
-  renderer: (data) => cardList.addItem(createNewCard(data))
-},
-  '.elements');
+  renderer: (data) => {
+    cardList.addItem(createNewCard(data));
+  },
+}, '.elements');
 
 cardList.renderItems();
+
+
 
 
 

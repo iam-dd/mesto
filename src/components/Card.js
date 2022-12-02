@@ -53,10 +53,10 @@ export class Card {
   createCard() {
     this._element = this._getTemplate();
     this.cardImage = this._element.querySelector('.card__image');
-    this._setEventListeners();
     this.cardImage.src = this._link;
     this.cardImage.alt = this._name;
     this._element.querySelector('.card__location').textContent = this._name;
+    this._setEventListeners();
     return this._element;
   }
 
