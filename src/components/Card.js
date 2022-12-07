@@ -4,6 +4,7 @@ export class Card {
     this._link = link;
     this._templateSelector = templateSelector;
     this.handleCardClick = handleCardClick;
+    
   }
 
   // Метод получения шаблона
@@ -18,7 +19,6 @@ export class Card {
 
   // Метод установки лайка
   _handleCardLike() {
-    this._like = this._element.querySelector('.card__like');
     this._like.classList.toggle('card__like_state_active');
     this._like.classList.toggle('card__like_state_hover');
   }
@@ -52,6 +52,7 @@ export class Card {
   // Метод создания карточки (публичный)
   createCard() {
     this._element = this._getTemplate();
+    this._like = this._element.querySelector('.card__like');
     this.cardImage = this._element.querySelector('.card__image');
     this.cardImage.src = this._link;
     this.cardImage.alt = this._name;

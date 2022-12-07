@@ -1,6 +1,6 @@
 import {settings} from '../utils/constants';
 
-export class Validator {
+export class FormValidator {
 
     constructor(settings, element) {
     this.formSelector = settings.formSelector;
