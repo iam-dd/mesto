@@ -2,15 +2,10 @@
   max-width: 120px;
   max-height: 120px;
   margin: 0;
-
+  opacity: 1;
+  transition: .5s;
 }
 
-@media screen and (max-width: 712px) {
-  .profile__avatar {
-    margin: 0 auto 10px;
-    grid-row: 1;
-    place-self: center;
-
-  }
+.profile__avatar:hover {
+  opacity: .2;
 }
-

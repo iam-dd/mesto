@@ -1,8 +1,7 @@
 .profile__person {
   display: flex;
   align-items: flex-end;
-  
-
+  position: relative;
 }
 
 @media screen and (max-width: 712px) {
@@ -15,6 +14,6 @@
 @media screen and (max-width: 510px) {
   .profile__person {
     flex-direction: column;
-            
+
   }
 }

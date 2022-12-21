@@ -8,7 +8,9 @@
   background-repeat: no-repeat;
   background-size: contain;
   place-self: end;
-  margin-right: -35px;
+  position: absolute;
+  right: -35px;
+  top: -35px;
  
 }
 

@@ -9,12 +9,15 @@
 
 <body class="page page_content">
   <header class="header page__header">
-    <img class="logo" src="<%=require('./images/logo.svg')%>" alt="логотип">
+    <img class="logo" src="<%=require('./images/logo.svg')%>" alt="логотип"></button>
   </header>
   <main>
     <section class="profile page__profile">
       <div class="profile__person">
-        <img class="profile__avatar" src="<%=require('./images/Avatar.png')%>" alt="аватар">
+        <button type="button" class="profile__avatar-button">
+          <img class="profile__avatar" src="<%=require('./images/Avatar.png')%>" alt="аватар">
+        </button>
+        
         <div class="profile__block-name">
           <h1 class="profile__title">Жак-Ив Кусто</h1>
           <button type="button" class="profile__edit-button"></button>>
@@ -68,6 +71,13 @@
       <h2 class="popup__title-image">image title</h2>
     </div>
   </section>
+  <section class="popup popup_confirmation">
+    <div class="popup__container popup__container_section_confirmation">
+      <button class="popup__button-close popup__button-close_section_confirmation" type="button"></button>
+      <h2 class="popup__title popup__title_section_confirmation">Вы уверены ?</h2>
+      <button class="popup__button-submit popup__button-submit_section_confirmation" type="submit">Да</button>
+    </div>
+  </section>
 
 
   <template class="template">
@@ -77,9 +87,9 @@
       <div class="card__sign">
         <h2 class="card__location">card title</h2>
         <div class="card__block-like">
-        <button type="button" class="card__like card__like_state_hover"></button>
-        <p class="card__amount-oflike">5</p>
-      </div>
+          <button type="button" class="card__like card__like_state_hover"></button>
+          <p class="card__amount-oflike">5</p>
+        </div>
       </div>
     </div>
   </template>

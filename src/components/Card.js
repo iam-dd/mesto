@@ -39,7 +39,7 @@ export class Card {
       .querySelector('.card__trash')
       .addEventListener('click', (evt) => {
         this._handleCardDelete();
-
+      
       });
 
     this._element
