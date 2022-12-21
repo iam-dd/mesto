@@ -78,7 +78,19 @@
       <button class="popup__button-submit popup__button-submit_section_confirmation" type="submit">Да</button>
     </div>
   </section>
-
+  <section class="popup popup_section_avatar-load">
+      <div class="popup__container">
+      <button class="popup__button-close popup__button-close_section_avatar-load" type="button"></button>
+      <form class="popup__form popup__form_section_avatar-load" action="url" method="get" name="popup__submit-form"
+        novalidate>
+        <h2 class="popup__title popup__title_section_avatar-load">Обновить аватар</h2>
+        <input id="url-input" class="popup__input popup__input_field_link" type="url" name="link"
+          placeholder="Ссылка на картинку" required>
+        <span class="url-input-error popup__input-error"></span>
+        <button class="popup__button-submit" type="submit">Сохранить</button>
+      </form>
+    </div>
+  </section>
 
   <template class="template">
     <div class="card">

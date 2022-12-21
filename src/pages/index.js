@@ -2,8 +2,8 @@
 import '../pages/index.css';
 import { FormValidator } from '../components/FormValidator';
 import {
-  settings, editButton, addButton,
-  formElementsAdd, formProfileAdd, inputName, inputAboutme, 
+  settings, avatarButton, editButton, addButton,
+  formElementsAdd, formProfileAdd, formAvatarLoad, inputName, inputAboutme,
 } from '../utils/constants.js';
 
 import { Card } from '../components/Card.js';
@@ -22,10 +22,14 @@ validatorFormCard.enableValidation();
 const validatorFormProfile = new FormValidator(settings, formProfileAdd);
 validatorFormProfile.enableValidation();
 
+const validatonFormAvatarLoad = new FormValidator(settings, formAvatarLoad);
+validatonFormAvatarLoad.enableValidation();
+
 // Кнопка вызова формы добавления профайла
 const selectors = {
   title: '.profile__title',
-  subtitle: '.profile__subtitle'
+  subtitle: '.profile__subtitle',
+  avatar: '.profile__avatar'
 }
 const newProfile = new UserInfo(selectors);
 
@@ -61,6 +65,20 @@ const popupAddCard = new PopupWithForm({
 });
 popupAddCard.setEventListeners();
 
+//Попап обновления аватарки
+
+const popupAvatarLoad = new PopupWithForm ({
+  popupSelector: '.popup_section_avatar-load',
+  handleSubmitForm: (dataInputs) => {
+    return api.newAvatarLoad(dataInputs.link)
+    .then((data) => {
+      newProfile.setUserInfo(data);
+    })
+
+  }
+})
+popupAvatarLoad.setEventListeners();
+
 // Кнопка вызова попапа добавления карточки
 
 addButton.addEventListener('click', () => {
@@ -68,6 +86,12 @@ addButton.addEventListener('click', () => {
   popupAddCard.openPopup();
 
 });
+
+// Кнопка открытия попапа загрузки аватара
+avatarButton.addEventListener('click', () => {
+  validatonFormAvatarLoad.toggleButtonState();
+  popupAvatarLoad.openPopup();
+})
 
 
 
@@ -77,35 +101,44 @@ function createNewCard(data) {
     { popupWithImage.openPopup(data) }
   }).createCard();
   return card;
+  // const newCard = new Api(API_OPTIONS);
+  // newCard.createCardApi(data.link, data.name);
 }
+
+
 
 // Попап с картинкой
 const popupWithImage = new PopupWithImage('.popup_section_image')
 popupWithImage.setEventListeners();
 
-const apiCards = {
+const API_OPTIONS = {
   url: 'https://mesto.nomoreparties.co/v1/cohort-56',
-  
-  headers: { 
+
+  headers: {
     authorization: '5bc865bb-7482-46a1-8209-c5f11aa5ba1a',
     'Content-Type': 'application/json',
   }
-}
+};
 
-const api = new Api (apiCards);
-api.getInitialCards().then((data) => {
-console.log(data)
-})
 
 // Слой добавления карточек в разметку
-const cardList = new Section({
-  items: initialCards,
-  renderer: (data) => {
-    cardList.addItem(createNewCard(data));
-  },
-}, '.elements');
 
-cardList.renderItems();
+
+const api = new Api(API_OPTIONS);
+api.getInitialCards().then((data) => {
+  const cardList = new Section({
+    items: data,
+    renderer: (data) => {
+      cardList.addItem(createNewCard(data));
+    },
+  }, '.elements');
+
+  cardList.renderItems();
+
+});
+
+
+
 
 
 

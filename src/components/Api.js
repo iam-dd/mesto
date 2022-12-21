@@ -2,24 +2,51 @@ export class Api {
   constructor(options) {
     this._url = options.url
     this._header = options.headers
-    this._token = options.token
+    this._body = options.body
 
   }
 
-  getInitialCards() {
-    return fetch(`${this._url}/cards`, {
+  async getInitialCards() {
+    const res = await fetch(`${this._url}/cards`, {
       headers: this._header,
-      authorization: this._token
     })
-    .then((res) => {
-      return this._getResponse(res);
-    });
+    return this._getResponse(res)
+  };
+
+  async createCardApi(link, name) {
+    const res = await fetch(`${this._url}/cards`, {
+      method: 'POST',
+      headers: this._header,
+      body: JSON.stringify({ link, name })
+    })
+    return this._getResponse(res)
   }
 
-  _getResponse() {
+  async deleteCard(id) {
+    const res = await fetch(`${this._url}/${id}`,
+      {
+        method: 'DELETE',
+        headers: this._header
+      })
+    return this._getResponse(res)
+
+  };
+
+
+  _getResponse(res) {
     if (res.ok) {
       return res.json();
     }
     return Promise.reject(`Ошибка: ${res.status}`);
+  };
+
+  async newAvatarLoad(avatar) {
+    const res = await fetch(`${this._url}/users/me/avatar`, {
+      method: 'PATCH',
+      headers: this._header,
+      body: JSON.stringify({ avatar })
+    })
+    return this._getResponse(res)
   }
+
 }
