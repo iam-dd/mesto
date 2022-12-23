@@ -7,6 +7,21 @@ const settings = {
   errorClass: 'popup__input-error_visible'
 };
 
+const API_OPTIONS = {
+  url: 'https://mesto.nomoreparties.co/v1/cohort-56',
+
+  headers: {
+    authorization: '5bc865bb-7482-46a1-8209-c5f11aa5ba1a',
+    'Content-Type': 'application/json',
+  }
+};
+
+const selectors = {
+  title: '.profile__title',
+  subtitle: '.profile__subtitle',
+  avatar: '.profile__avatar'
+}
+
 //Button
 const editButton = document.querySelector('.profile__edit-button');
 const addButton = document.querySelector('.profile__button');
@@ -26,13 +41,14 @@ const titleText = document.querySelector('.profile__title');
 const subtitleText = document.querySelector('.profile__subtitle');
 
 //Form
+const formPopup = document.querySelector('.popup__form');
 const formProfileAdd = document.querySelector('.popup__form_section_profile');
 const formElementsAdd = document.querySelector('.popup__form_section_elements');
 const formAvatarLoad = document.querySelector('.popup__form_section_avatar-load')
 
 //Input
 const inputName = formProfileAdd.querySelector('.popup__input_field_name');
-const inputAboutme = formProfileAdd.querySelector('.popup__input_field_aboutme');
+const inputAbout = formProfileAdd.querySelector('.popup__input_field_about');
 const inputTitle = formElementsAdd.querySelector('.popup__input_field_title');
 const inputLink = formElementsAdd.querySelector('.popup__input_field_link');
 
@@ -41,34 +57,5 @@ const template = document.querySelector('.template');
 
 
 
-
-//Cards Array
-// const initialCards = [
-//   {
-//     name: 'Архыз',
-//     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-//   },
-//   {
-//     name: 'Челябинская область',
-//     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-//   },
-//   {
-//     name: 'Иваново',
-//     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-//   },
-//   {
-//     name: 'Камчатка',
-//     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-//   },
-//   {
-//     name: 'Холмогорский район',
-//     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-//   },
-//   {
-//     name: 'Байкал',
-//     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-//   }
-// ];
-
-export {formAvatarLoad, avatarButton, settings, editButton, addButton, popupProfile, popupElements, popupImage, imageInPopup, titlePopupImage, popups, titleText, subtitleText, formProfileAdd, formElementsAdd, inputName, inputAboutme
+export { formPopup, selectors, API_OPTIONS, formAvatarLoad, avatarButton, settings, editButton, addButton, popupProfile, popupElements, popupImage, imageInPopup, titlePopupImage, popups, titleText, subtitleText, formProfileAdd, formElementsAdd, inputName, inputAbout
 , inputTitle, inputLink, listElement};

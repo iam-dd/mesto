@@ -49,4 +49,32 @@ export class Api {
     return this._getResponse(res)
   }
 
+  async setProfileData(dataInputs) {
+    const res = await fetch(`${this._url}/users/me`, {
+      method: 'PATCH',
+      headers: this._header,
+      body: JSON.stringify({
+        name: dataInputs.name,
+        about: dataInputs.about
+      })
+    })
+    {
+      return this._getResponse(res)
+    }
+  }
+
+
+  async getProfileData() {
+    const res = await fetch(`${this._url}/users/me`, {
+      headers: this._header,
+    })
+    {
+    return this._getResponse(res)
+    .then((data) => {
+      return (data.name, data.about)
+    })
+    }
+  }
+
+
 }
