@@ -18,6 +18,10 @@ import { Api } from '../components/Api.js';
 // Передаем URL и Token для API
 const api = new Api(API_OPTIONS);
 
+api.getProfileData().then((res) => {
+  newProfile.setUserInfo(res);
+});
+
 
 
 // Вызов валидатора для форм
@@ -42,8 +46,9 @@ const addUserData = () => {
 const popupAddProfile = new PopupWithForm({
   popupSelector: '.popup_section_profile',
   handleSubmitForm: (dataInputs) => {
-      newProfile.setUserInfo(dataInputs)
-      api.setProfileData(dataInputs);
+    api.setProfileData(dataInputs).then((res) => {
+            newProfile.setUserInfo(res);
+    })
   }
 })
 popupAddProfile.setEventListeners();

@@ -71,7 +71,7 @@ export class Api {
     {
     return this._getResponse(res)
     .then((data) => {
-      return (data.name, data.about)
+      return (data)
     })
     }
   }
