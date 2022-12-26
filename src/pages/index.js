@@ -68,7 +68,10 @@ popupAvatarLoad.setEventListeners();
 const popupAddCard = new PopupWithForm({
   popupSelector: '.popup_section_elements',
   handleSubmitForm: (dataInputs) => {
-    cardList.addItem(createNewCard({ name: dataInputs.name, link: dataInputs.link }));
+    api.createCardApi(dataInputs.link, dataInputs.name).then((res) => {
+      console.log(res)
+    cardList.addItem(createNewCard(res));
+  })
   },
 });
 popupAddCard.setEventListeners();
@@ -108,17 +111,20 @@ function createNewCard(data) {
 }
 
 // Слой добавления карточек в разметку
-api.getInitialCards().then((data) => {
+const items = [];
   const cardList = new Section({
-    items: data,
+    items: items,
     renderer: (data) => {
       cardList.addItem(createNewCard(data));
     },
   }, '.elements');
 
-  cardList.renderItems();
 
-});
+  api.getInitialCards().then((res) => {
+  cardList.renderItems(res);
+  });
+
+
 
 
 
