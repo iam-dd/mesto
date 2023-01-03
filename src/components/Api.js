@@ -23,7 +23,7 @@ export class Api {
   }
 
   async deleteCard(id) {
-    const res = await fetch(`${this._url}/${id}`,
+    const res = await fetch(`${this._url}/cards/${id}`,
       {
         method: 'DELETE',
         headers: this._header
@@ -69,11 +69,35 @@ export class Api {
       headers: this._header,
     })
     {
-    return this._getResponse(res)
-    .then((data) => {
-      return (data)
-    })
+      return this._getResponse(res)
+        .then((data) => {
+          return (data)
+        })
     }
+  }
+
+  async setCardLike(cardId) {
+    const res = await fetch(`${this._url}/cards/${cardId}/likes`, {
+      method: 'PUT',
+      headers: this._header,
+    })
+    {
+     
+      return this._getResponse(res);
+    }
+  }
+
+  
+  async delCardLike(cardId) {
+    const res = await fetch(`${this._url}/cards/${cardId}/likes`, {
+      method: 'DELETE',
+      headers: this._header,
+      })
+    {
+      console.log(res)
+      return this._getResponse(res);
+    }
+
   }
 
 

@@ -20,8 +20,7 @@ const api = new Api(API_OPTIONS);
 
 api.getProfileData().then((res) => {
   newProfile.setUserInfo(res);
-});
-
+ });
 
 
 // Вызов валидатора для форм
@@ -47,21 +46,21 @@ const popupAddProfile = new PopupWithForm({
   popupSelector: '.popup_section_profile',
   handleSubmitForm: (dataInputs) => {
     api.setProfileData(dataInputs).then((res) => {
-            newProfile.setUserInfo(res);
+      newProfile.setUserInfo(res);
     })
   }
 })
 popupAddProfile.setEventListeners();
 
 //Попап обновления аватарки
-const popupAvatarLoad = new PopupWithForm ({
+const popupAvatarLoad = new PopupWithForm({
   popupSelector: '.popup_section_avatar-load',
   handleSubmitForm: (dataInputs) => {
     return api.newAvatarLoad(dataInputs.link)
-    .then((data) => {
-      newProfile.setUserInfo(data);
-    })
-    .catch((err) => console.log(err));
+      .then((data) => {
+        newProfile.setUserInfo(data);
+      })
+      .catch((err) => console.log(err));
 
   }
 })
@@ -74,9 +73,9 @@ const popupAddCard = new PopupWithForm({
   popupSelector: '.popup_section_elements',
   handleSubmitForm: (dataInputs) => {
     api.createCardApi(dataInputs.link, dataInputs.name).then((res) => {
-      console.log(res)
-    cardList.addItem(createNewCard(res));
-  })
+      cardList.addItem(createNewCard(res));
+
+    })
   },
 });
 popupAddCard.setEventListeners();
@@ -111,23 +110,26 @@ editButton.addEventListener('click', () => {
 function createNewCard(data) {
   const card = new Card(data, '.template', () => {
     { popupWithImage.openPopup(data) }
-  }).createCard();
+  }, api).createCard();
+  //console.log(data)
   return card;
+
 }
+
 
 // Слой добавления карточек в разметку
 const items = [];
-  const cardList = new Section({
-    items: items,
-    renderer: (data) => {
-      cardList.addItem(createNewCard(data));
-    },
-  }, '.elements');
+const cardList = new Section({
+  items: items,
+  renderer: (data) => {
+    cardList.addItem(createNewCard(data));
+  },
+}, '.elements');
 
 
-  api.getInitialCards().then((res) => {
+api.getInitialCards().then((res) => {
   cardList.renderItems(res);
-  });
+});
 
 
 
