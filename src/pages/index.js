@@ -3,7 +3,7 @@ import '../pages/index.css';
 import { FormValidator } from '../components/FormValidator';
 import {
   selectors, API_OPTIONS, settings, avatarButton, editButton, addButton,
-  formElementsAdd, formProfileAdd, formAvatarLoad, inputName, inputAbout,
+  inputName, inputAbout, formsArray
 } from '../utils/constants.js';
 
 import { Card } from '../components/Card.js';
@@ -15,23 +15,31 @@ import { PopupWithConfirmation } from '../components/PopupWithConfirmation';
 import { Api } from '../components/Api.js';
 
 
+
 // Передаем URL и Token для API
 const api = new Api(API_OPTIONS);
 
+// Глобальная переменная для User ID
+let userId = '';
+
+
+// Получаем данные пользователя
 api.getProfileData().then((res) => {
+  userId = res._id;
   newProfile.setUserInfo(res);
- });
+});
 
+// Функция валидации
+function enableValidator() {
+formsArray.forEach((form) => {
 
-// Вызов валидатора для форм
-const validatorFormCard = new FormValidator(settings, formElementsAdd);
-validatorFormCard.enableValidation();
+const validatorFormsArray = new FormValidator(settings, form);
+validatorFormsArray.enableValidation();
+validatorFormsArray.toggleButtonState();
 
-const validatorFormProfile = new FormValidator(settings, formProfileAdd);
-validatorFormProfile.enableValidation();
+})
+}
 
-const validatonFormAvatarLoad = new FormValidator(settings, formAvatarLoad);
-validatonFormAvatarLoad.enableValidation();
 
 // Попап редактирования профиля
 const newProfile = new UserInfo(selectors);
@@ -88,33 +96,46 @@ popupWithImage.setEventListeners();
 
 // Кнопка вызова попапа добавления карточки
 addButton.addEventListener('click', () => {
-  validatorFormCard.toggleButtonState();
+  enableValidator()
   popupAddCard.openPopup();
 
 });
 
 // Кнопка открытия попапа загрузки аватара
 avatarButton.addEventListener('click', () => {
-  validatonFormAvatarLoad.toggleButtonState();
+  enableValidator()
   popupAvatarLoad.openPopup();
 })
 
 // Кнопка редактирования профиля
 editButton.addEventListener('click', () => {
-  validatorFormProfile.toggleButtonState();
+  enableValidator()
   popupAddProfile.openPopup();
   addUserData();
 });
 
+// Функция проверки владельца лайка
+function handleCheckOwnerCardLike() {
+  this._likes.some(like => {
+     if (like._id === userId) {
+      this._brushCardLike()
+     }
+     
+  })
+  
+}
+
+
 // Функция создания карточки
 function createNewCard(data) {
-  const card = new Card(data, '.template', () => {
+  const card = new Card(data, userId, '.template', () => {
     { popupWithImage.openPopup(data) }
-  }, api).createCard();
-  //console.log(data)
+  }, api,
+    handleCheckOwnerCardLike).createCard();
   return card;
 
 }
+
 
 
 // Слой добавления карточек в разметку

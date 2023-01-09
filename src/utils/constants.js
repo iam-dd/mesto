@@ -41,6 +41,8 @@ const titleText = document.querySelector('.profile__title');
 const subtitleText = document.querySelector('.profile__subtitle');
 
 //Form
+
+const formsArray = Array.from(document.querySelectorAll('.popup__form'));
 const formPopup = document.querySelector('.popup__form');
 const formProfileAdd = document.querySelector('.popup__form_section_profile');
 const formElementsAdd = document.querySelector('.popup__form_section_elements');
@@ -57,5 +59,5 @@ const template = document.querySelector('.template');
 
 
 
-export { formPopup, selectors, API_OPTIONS, formAvatarLoad, avatarButton, settings, editButton, addButton, popupProfile, popupElements, popupImage, imageInPopup, titlePopupImage, popups, titleText, subtitleText, formProfileAdd, formElementsAdd, inputName, inputAbout
+export { formsArray, selectors, API_OPTIONS, formAvatarLoad, avatarButton, settings, editButton, addButton, popupProfile, popupElements, popupImage, imageInPopup, titlePopupImage, popups, titleText, subtitleText, formProfileAdd, formElementsAdd, inputName, inputAbout
 , inputTitle, inputLink, listElement};

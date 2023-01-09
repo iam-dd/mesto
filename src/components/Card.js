@@ -1,19 +1,14 @@
 export class Card {
-  constructor({ name, link, _id, likes}, templateSelector, handleCardClick, api) {
-    this._name = name;
-    this._link = link;
-    this._id = _id;
-    this._likes = likes.length;
+  constructor(data, userId, templateSelector, handleCardClick, api, handleCheckOwnerCardLike) {
+    this._data = data;
     this._templateSelector = templateSelector;
     this.handleCardClick = handleCardClick;
     this._api = api;
-  
+    this._userId = userId;
+    this._handleCheckOwnerCardLike = handleCheckOwnerCardLike;
+    this._likes = data.likes
+
   }
-
-
-  // _findUserId() {
-  //   return this._likes.find((res) => res._id === this._userId)
-  // }
 
 
   // Метод получения шаблона
@@ -26,47 +21,36 @@ export class Card {
     return cardElement;
   }
 
-  //Метод установки лайка
-  _handleCardLike() {
-    this._like.classList.toggle('card__like_state_active');
-    this._like.classList.toggle('card__like_state_hover');
-    this._api.setCardLike(this._id).then((res) => {
-      const arrayLikes = res.likes.length
-      this.countLikes.textContent = arrayLikes;
 
-    });
-
+  _checkLikeOwner() {
+    this._handleCheckOwnerCardLike()
+    console.log(this._data)
   }
 
-
-  _setCardsLike() {
-    this.countLikes.textContent = this._likes;
+  _updateCardsLike() {
+    this.countLikes.textContent = this._data.likes.length
   }
 
-  _getCardOwner() {
-    this._api.setCardLike(this._id).then((res) => {
-      const likeOwner = res.owner._id
-      console.log(likeOwner)
-    });
+  _brushCardLike() {
+    this._like.classList.add('card__like_state_active')
   }
 
 
   // Метод установки слушателей
   _setEventListeners() {
     this.cardImage.addEventListener('click', () => {
-      this.handleCardClick(this._name, this._link);
+      this.handleCardClick(this._data.name, this.data._link);
     });
 
 
     this._element
       .querySelector('.card__like')
       .addEventListener('click', () => {
-        this._handleCardLike();
+        // this._handleCardLike();
+        this._setCardLike()
       })
 
   }
-
-
 
 
   // Метод создания карточки (публичный)
@@ -75,11 +59,11 @@ export class Card {
     this._like = this._element.querySelector('.card__like');
     this.cardImage = this._element.querySelector('.card__image');
     this.countLikes = this._element.querySelector('.card__amount-oflike');
-    this.cardImage.src = this._link;
-    this.cardImage.alt = this._name;
-    this._setCardsLike();
-    this._getCardOwner();
-    this._element.querySelector('.card__location').textContent = this._name;
+    this.cardImage.src = this._data.link;
+    this.cardImage.alt = this._data.name;
+    this._updateCardsLike();
+    this._checkLikeOwner();
+    this._element.querySelector('.card__location').textContent = this._data.name;
     this._setEventListeners();
     return this._element;
   }

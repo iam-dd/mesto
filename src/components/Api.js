@@ -6,6 +6,7 @@ export class Api {
 
   }
 
+  // Получаем начальный массив карточек с сервера
   async getInitialCards() {
     const res = await fetch(`${this._url}/cards`, {
       headers: this._header,
@@ -13,6 +14,8 @@ export class Api {
     return this._getResponse(res)
   };
 
+
+  // Создаем карточку на сервере
   async createCardApi(link, name) {
     const res = await fetch(`${this._url}/cards`, {
       method: 'POST',
@@ -22,6 +25,8 @@ export class Api {
     return this._getResponse(res)
   }
 
+
+  // Удаляем карточку на сервере
   async deleteCard(id) {
     const res = await fetch(`${this._url}/cards/${id}`,
       {
@@ -49,6 +54,8 @@ export class Api {
     return this._getResponse(res)
   }
 
+
+  // Передаём данные о пользователе
   async setProfileData(dataInputs) {
     const res = await fetch(`${this._url}/users/me`, {
       method: 'PATCH',
@@ -63,7 +70,7 @@ export class Api {
     }
   }
 
-
+// Получаем данные о пользователе
   async getProfileData() {
     const res = await fetch(`${this._url}/users/me`, {
       headers: this._header,
@@ -75,7 +82,7 @@ export class Api {
         })
     }
   }
-
+// Устанавливаем лайк карточке
   async setCardLike(cardId) {
     const res = await fetch(`${this._url}/cards/${cardId}/likes`, {
       method: 'PUT',
@@ -87,7 +94,7 @@ export class Api {
     }
   }
 
-  
+  // Удаляем лайк карточки
   async delCardLike(cardId) {
     const res = await fetch(`${this._url}/cards/${cardId}/likes`, {
       method: 'DELETE',
