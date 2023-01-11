@@ -8,10 +8,10 @@ const settings = {
 };
 
 const API_OPTIONS = {
-  url: 'https://mesto.nomoreparties.co/v1/cohort-56',
+  url: 'https://mesto.nomoreparties.co/v1/cohort-57',
 
   headers: {
-    authorization: '5bc865bb-7482-46a1-8209-c5f11aa5ba1a',
+    authorization: '81f64b2f-a6ad-4fe1-8a92-55e31bb6281c',
     'Content-Type': 'application/json',
   }
 };

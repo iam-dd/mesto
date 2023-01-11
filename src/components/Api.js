@@ -101,7 +101,6 @@ export class Api {
       headers: this._header,
       })
     {
-      console.log(res)
       return this._getResponse(res);
     }
 
