@@ -9,7 +9,7 @@ export class Card {
     this._handleCardDel = handleCardDel;
     this._likes = data.likes
     this._owner = data.owner
-    
+
   }
 
 
@@ -49,10 +49,12 @@ export class Card {
 
   _setCardsLike(likes) {
     if (likes.some(like => like._id === this._userId)) {
-      this._like.classList.remove('card__like_state_active')
+
+      this._like.classList.add('card__like_state_active')
     }
     else {
-      this._like.classList.add('card__like_state_active')
+
+      this._like.classList.remove('card__like_state_active')
     }
   }
 
@@ -76,6 +78,7 @@ export class Card {
     this._element
       .querySelector('.card__like')
       .addEventListener('click', () => {
+        console.log('Clicked like')
         this._handleClickLike();
       })
     //Слушатель корзина
@@ -95,7 +98,7 @@ export class Card {
     this.countLikes = this._element.querySelector('.card__amount-oflike');
     this.cardImage.src = this._data.link;
     this.cardImage.alt = this._data.name;
-    this._setCardsLike(this._likes);
+    this.setLikeData(this._likes);
     this._element.querySelector('.card__location').textContent = this._data.name;
     this._setEventListeners();
 

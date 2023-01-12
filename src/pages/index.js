@@ -70,10 +70,10 @@ const popupAddProfile = new PopupWithForm({
   popupSelector: '.popup_section_profile',
   handleSubmitForm: (dataInputs) => {
     return api.setProfileData(dataInputs)
-    .then((res) => {
-      newProfile.setUserInfo(res);
-    })
-    .catch((err) => console.log(err))
+      .then((res) => {
+        newProfile.setUserInfo(res);
+      })
+      .catch((err) => console.log(err))
   }
 })
 popupAddProfile.setEventListeners();
@@ -117,11 +117,11 @@ const popupAddCard = new PopupWithForm({
   popupSelector: '.popup_section_elements',
   handleSubmitForm: (dataInputs) => {
     return api.createCardApi(dataInputs.link, dataInputs.name)
-    .then((res) => {
-      cardList.addItem(createNewCard(res));
+      .then((res) => {
+        cardList.addItem(createNewCard(res));
 
-    })
-    .catch((err) => console.log(err));
+      })
+      .catch((err) => console.log(err));
   },
 });
 popupAddCard.setEventListeners();
@@ -165,10 +165,8 @@ function createNewCard(data) {
         .then((obj) => {
           card.setLikeData(obj.likes);
         })
-        .catch((err) => {
-          console.log('Ошибка при лайке', err);
-          // console.log('handleAddLike', obj)
-        })
+        .catch((err) => console.log(err));
+
     },
 
     handleRemoveLike: () => {
@@ -176,10 +174,7 @@ function createNewCard(data) {
         .then((obj) => {
           card.setLikeData(obj.likes);
         })
-        .catch((err) => {
-          console.log('Ошибка удаления лайка', err);
-          //console.log('handleRemoveLike', obj)
-        })
+        .catch((err) => console.log(err));
     },
 
     handleCardDel: () => {
