@@ -69,9 +69,11 @@ const addUserData = () => {
 const popupAddProfile = new PopupWithForm({
   popupSelector: '.popup_section_profile',
   handleSubmitForm: (dataInputs) => {
-    api.setProfileData(dataInputs).then((res) => {
+    return api.setProfileData(dataInputs)
+    .then((res) => {
       newProfile.setUserInfo(res);
     })
+    .catch((err) => console.log(err))
   }
 })
 popupAddProfile.setEventListeners();
@@ -114,10 +116,12 @@ popupConfirm.setEventListeners();
 const popupAddCard = new PopupWithForm({
   popupSelector: '.popup_section_elements',
   handleSubmitForm: (dataInputs) => {
-    api.createCardApi(dataInputs.link, dataInputs.name).then((res) => {
+    return api.createCardApi(dataInputs.link, dataInputs.name)
+    .then((res) => {
       cardList.addItem(createNewCard(res));
 
     })
+    .catch((err) => console.log(err));
   },
 });
 popupAddCard.setEventListeners();

@@ -49,10 +49,10 @@ export class Card {
 
   _setCardsLike(likes) {
     if (likes.some(like => like._id === this._userId)) {
-      this._like.classList.add('card__like_state_active')
+      this._like.classList.remove('card__like_state_active')
     }
     else {
-      this._like.classList.remove('card__like_state_active')
+      this._like.classList.add('card__like_state_active')
     }
   }
 
