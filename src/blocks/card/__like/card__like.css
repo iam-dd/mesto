@@ -8,4 +8,10 @@
   border: 0;
   background-color: transparent;
   flex-shrink: 0;
+  cursor: pointer;
+}
+
+
+.card__like:hover {
+  background-image: url(../../../images/heart_hover.svg);
 }
