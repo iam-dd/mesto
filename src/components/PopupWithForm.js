@@ -28,18 +28,20 @@ export class PopupWithForm extends Popup {
     this.closePopup();
   };
 
+  changeTextContent() {
+    this._submitButton.textContent = this._submitButtonText;
+  }
+
+  showPreloader() {
+    console.log("showPreloader");
+    this._submitButton.textContent = "Сохранение...";
+  }
+
   setEventListeners() {
     super.setEventListeners();
     this._form.addEventListener("submit", (evt) => {
       evt.preventDefault();
-      this._submitButton.textContent = "Сохранение...";
-      this._handleSubmitForm(this._getInputValues())
-        .then(() => {
-          this.closePopup();
-        })
-        .finally(() => {
-          this._submitButton.textContent = this._submitButtonText;
-        });
+      this._handleSubmitForm(this._getInputValues());
     });
   }
 

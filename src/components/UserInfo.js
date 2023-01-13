@@ -8,6 +8,9 @@ export class UserInfo {
   setUserInfo(dataInputs) {
     this._title.textContent = dataInputs.name;
     this._subtitle.textContent = dataInputs.about;
+  }
+
+  setNewAvatar(dataInputs) {
     this._avatar.src = dataInputs.avatar;
   }
 

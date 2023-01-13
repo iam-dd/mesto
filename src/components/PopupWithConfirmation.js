@@ -6,11 +6,8 @@ export class PopupWithConfirmation extends Popup {
     this._handleSubmitForm = handleSubmitForm;
   }
 
-  openPopup() {
-    super.openPopup();
-  }
-  closePopup() {
-    super.closePopup();
+  _handleSubmitConfirm() {
+this._handleSubmitForm();
   }
 
   setEventListeners() {
@@ -18,7 +15,7 @@ export class PopupWithConfirmation extends Popup {
     this._popup
       .querySelector(".popup__button-submit_section_confirmation")
       .addEventListener("click", () => {
-        this._handleSubmitForm();
+        this._handleSubmitConfirm();
       });
   }
 }

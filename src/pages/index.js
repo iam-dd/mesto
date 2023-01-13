@@ -33,6 +33,7 @@ Promise.all([api.getInitialCards(), api.getProfileData()])
     userId = userData._id;
     cardList.renderItems(cardData);
     newProfile.setUserInfo(userData);
+    newProfile.setNewAvatar(userData);
   })
   .catch((error) => {
     console.error(error);
@@ -71,12 +72,16 @@ const addUserData = () => {
 const popupAddProfile = new PopupWithForm({
   popupSelector: ".popup_section_profile",
   handleSubmitForm: (dataInputs) => {
-    return api
-      .setProfileData(dataInputs)
+    popupAddProfile.showPreloader()
+    api.setProfileData(dataInputs)
       .then((res) => {
         newProfile.setUserInfo(res);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .finally(() => {
+        popupAddProfile.changeTextContent();
+        popupAddProfile.closePopup();
+      });
   },
 });
 popupAddProfile.setEventListeners();
@@ -85,12 +90,16 @@ popupAddProfile.setEventListeners();
 const popupAvatarLoad = new PopupWithForm({
   popupSelector: ".popup_section_avatar-load",
   handleSubmitForm: (dataInputs) => {
-    return api
-      .newAvatarLoad(dataInputs.link)
+    popupAvatarLoad.showPreloader();
+    api.newAvatarLoad(dataInputs.link)
       .then((data) => {
-        newProfile.setUserInfo(data);
+        newProfile.setNewAvatar(data);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log("AvatarLoad", err))
+      .finally(() => {
+        popupAvatarLoad.changeTextContent();
+        popupAvatarLoad.closePopup();
+      });
   },
 });
 popupAvatarLoad.setEventListeners();
@@ -114,12 +123,16 @@ popupConfirm.setEventListeners();
 const popupAddCard = new PopupWithForm({
   popupSelector: ".popup_section_elements",
   handleSubmitForm: (dataInputs) => {
-    return api
-      .createCardApi(dataInputs.link, dataInputs.name)
+    popupAddCard.showPreloader();
+    api.createCardApi(dataInputs.link, dataInputs.name)
       .then((res) => {
         cardList.addItem(createNewCard(res));
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .finally(() => {
+        popupAddCard.changeTextContent();
+        popupAddCard.closePopup();
+      });
   },
 });
 popupAddCard.setEventListeners();
@@ -171,7 +184,7 @@ function createNewCard(data) {
     },
 
     handleCardDel: () => {
-      popupConfirm.openPopup(data);
+      popupConfirm.openPopup();
       cardId = data._id;
       cardForTrash = card;
     },
